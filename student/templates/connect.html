@@ -1,0 +1,84 @@
+{% extends "base2.html" %}
+{% load embed_video_tags %}
+{% block page_content %}
+
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="{% url 'home' %}">
+                    Virtual Learning Lab
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'welcome_page' page.0.courses.id  %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'class_index' page.0.courses.id %}">Modules</a>
+              </li>
+  
+              <li >
+                <a href="{% url 'connect' page.0.courses.id %}">Connect</a>
+              </li>
+
+              
+              <li >
+                <a href="{% url 'reading_material' page.0.courses.id %}">Reading material</a>
+              </li>
+  
+  
+  
+   
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+            
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    
+
+                    <div class="container-fluid">
+                        
+               
+                        <div class="col-md-12 ">
+                          <h1>{{ page.0.title }}</h1>
+    
+
+                          <p> 
+                            {{ page.0.content | safe }}</p>
+
+                          
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+ <!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+</script>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn virtuallearninglab.wsgi --log-file -
