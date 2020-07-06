@@ -23,26 +23,26 @@
               </small> 
       
               <h4 style="color:white; padding-left: 1rem;">Course Links:</h4>
-
-            
             <li>
-                <a href="{% url 'welcome_page' post.courses.id  %}">Home</a>
+                <a href="{% url 'welcome_page' page.courses.id  %}">Home</a>
             </li>
             <li>
-                <a href="{% url 'class_index' post.courses.id %}">Modules</a>
+                <a href="{% url 'class_index' page.courses.id %}">Modules</a>
               </li>
   
               <li >
-                <a href="{% url 'connect' post.courses.id %}">Connect</a>
+                <a href="{% url 'connect' page.courses.id %}">Connect</a>
+              </li>
+
+              
+              <li >
+                <a href="{% url 'reading_material' page.courses.id %}">Reading material</a>
               </li>
 
               <li >
-                <a href="{% url 'reading_material' post.courses.id %}">Reading Material</a>
+                <a href="{% url 'quiz' page.courses.id %}">Assessments</a>
               </li>
-
-              <li >
-                <a href="{% url 'quiz' post.courses.id %}">Assessments</a>
-              </li>
+  
   
   
   
@@ -59,22 +59,16 @@
             
                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     
-                    
+
                     <div class="container-fluid">
                         
                
                         <div class="col-md-12 ">
-                          <h1>{{ post.title }}</h1>
-
+                          <h1>{{ page.title }}</h1>
+    
 
                           <p> 
-                          {% video post.video as my_video %}
-
-                              
-                            {% video my_video "large" %}
-                              {% endvideo %}
-                              
-                            {{ post.content | safe }}</p>
+                            {{ page.content | safe }}</p>
 
                           
                         </div>

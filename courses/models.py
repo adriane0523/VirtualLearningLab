@@ -1,5 +1,5 @@
 from django.db import models
-import uuid 
+import uuid
 
 class Courses(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -11,3 +11,7 @@ class Courses(models.Model):
 
     def __str__(self):
         return 'Course: ' + self.name
+        
+    class Meta: 
+        # Add verbose name 
+        verbose_name = 'Courses/Classe'

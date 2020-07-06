@@ -33,8 +33,15 @@
               <a class="nav-link" href="{% url 'course' %}">Courses</a>
             </li>
 
- 
-        
+            {% if user.is_superuser %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'admin' %}">Admin Panel</a>
+            </li>
+
+            {% endif %}
+
+
+
 
 
           

@@ -24,12 +24,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('student/', include("student.urls")),
-    path('zoom/', include("zoom.urls")),
     path('courses', include("courses.urls")),
     path('tinymce/', include("tinymce.urls")),
     path('', include("home.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('admin_panel/', include('admin_panel.urls')),
 
 
 ]

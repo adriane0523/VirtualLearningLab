@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'student',
     'embed_video',
-    'zoom',
+   
     'courses',
     'tinymce',
     'home',
+    'admin_panel',
   
     'ckeditor',
     'ckeditor_uploader',
