@@ -24,9 +24,9 @@ STATIC_ROOT = os.path.join(BASE_DIR,  "static")
 SECRET_KEY = '0ywxb*nsks*$_3yjvj9im4bot&c^5%=+jygrgoe3x%%xuh_g65'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['virtual-learning-lab.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['64.225.122.57', 'elearning-lab.org','virtual-learning-lab.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
