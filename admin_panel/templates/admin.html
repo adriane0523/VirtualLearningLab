@@ -37,6 +37,10 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/admin/courses/courses/add">Create Course</a>
             </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/courses/courses/">View Courses</a>
+            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/admin/auth/user/">View Users</a>
             </li>
@@ -65,11 +69,11 @@
                         <h3 style="padding-top:3rem">{{ courses.name }}</h3>
                         <p>{{ courses.description }}</p>
                         <a href= "{% url 'welcome_page' courses.id %}"> View</a> |
-                        <a href= "/admin/student/welcomepage/?courses__id__exact={{courses.id }}"> Add Welcome Page</a> |
-                        <a href= "/admin/student/post/?courses__id__exact={{ courses.id }}"> Add Modules</a> |
-                        <a href= "/admin/student/connect/?courses__id__exact={{courses.id }}"> Add Connect</a> |
-                        <a href= "/admin/student/readingmaterial/?courses__id__exact={{courses.id }}"> Add Reading Material</a> |
-                        <a href= "/admin/student/quiz/?courses__id__exact={{ courses.id }}"> Add Assessments</a> |
+                        <a href= "/admin/student/welcomepage/?courses__id__exact={{courses.id }}"> Add/Edit Welcome Page</a> |
+                        <a href= "/admin/student/post/?courses__id__exact={{ courses.id }}"> Add/Edit Modules</a> |
+                        <a href= "/admin/student/connect/?courses__id__exact={{courses.id }}"> Add/Edit Connect</a> |
+                        <a href= "/admin/student/readingmaterial/?courses__id__exact={{courses.id }}"> Add/Edit Reading Material</a> |
+                        <a href= "/admin/student/quiz/?courses__id__exact={{ courses.id }}"> Add/Edit Assessments</a> |
          
                     
                     

@@ -21,12 +21,15 @@ STATIC_ROOT = os.path.join(BASE_DIR,  "static")
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0ywxb*nsks*$_3yjvj9im4bot&c^5%=+jygrgoe3x%%xuh_g65'
+SECRET_KEY = ''
+
+with open('secret_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['64.225.122.57', 'elearning-lab.org','virtual-learning-lab.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['64.225.122.57', 'wwww.elearning-lab.org', 'elearning-lab.org','virtual-learning-lab.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -141,7 +144,7 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = '/'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #only for testing, comment out for production
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #only for testing, comment out for production
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR,  "static")
@@ -156,3 +159,18 @@ CKEDITOR_CONFIGS = {
         'width':1500,
     },
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+
+
+with open('email.txt') as f:
+    EMAIL_HOST_USER = f.read().strip()
+
+
+with open('email.txt') as f:
+    EMAIL_HOST_PASSWORD = f.read().strip()
+
