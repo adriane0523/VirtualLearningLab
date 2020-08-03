@@ -171,6 +171,6 @@ with open('email.txt') as f:
     EMAIL_HOST_USER = f.read().strip()
 
 
-with open('email.txt') as f:
+with open('password.txt') as f:
     EMAIL_HOST_PASSWORD = f.read().strip()
 
