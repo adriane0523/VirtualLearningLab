@@ -103,3 +103,46 @@
     padding-top: 2rem;
     padding-bottom: 1rem;
   }
+
+
+  @media (min-width: 250px) { 
+.caption h1{  font-size: 2.5rem;}
+.caption h5{  font-size: 1.2rem; padding-right: 2rem;} 
+.about p{font-size: 0.8rem;}
+.title h1{font-size: 2rem} 
+iframe{width: 300px; height: 300px;}
+}
+
+
+  
+@media (min-width: 576px) { 
+.caption h1{  font-size: 2.5rem;}
+.caption h5{  font-size: 1.4rem;}
+.about p{font-size: 0.8rem;}
+.title h1{font-size: 2.2rem}
+iframe{width: 500px; height: 300px;} }
+
+
+@media (min-width: 768px) { 
+.caption h1{  font-size:  2.8rem;}
+.caption h5{  font-size: 1.6rem;}
+.about p{font-size: 1rem;} 
+.title h1{font-size: 2.4rem} 
+iframe{width: 700px; height: 500px;}}
+
+
+@media (min-width: 992px) {
+.caption h1{  font-size:  3.3rem;}
+.caption h5{  font-size: 1.8rem;}
+.about p{font-size: 1.2rem;}
+.title h1{font-size: 2.6rem}
+iframe{width: 800px; height: 600px;}  }
+
+
+@media (min-width: 1200px) { 
+.caption h1{  font-size:  3.8rem;}
+.caption h5{  font-size: 2rem;}
+.about p{font-size: 1.2rem;}
+.title h1{font-size: 2.8rem}
+iframe{width: 800px; height: 600px;}}
+
