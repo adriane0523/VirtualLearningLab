@@ -27,10 +27,8 @@ with open('secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG = True
 ALLOWED_HOSTS = ['207.154.236.200', 'wwww.elearning-lab.org', 'elearning-lab.org','virtual-learning-lab.herokuapp.com', '127.0.0.1']
-
 
 # Application definition
 
@@ -41,18 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'student',
+    'Components.student',
     'embed_video',
-   
-    'courses',
+    'Components.courses',
     'tinymce',
-    'home',
-    'admin_panel',
-  
+    'Components.home',
+    'Components.admin_panel',
     'ckeditor',
     'ckeditor_uploader',
-
-
 ]
 
 MIDDLEWARE = [
@@ -98,7 +92,6 @@ DATABASES = {
     
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -136,22 +129,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = ( 
     os.path.join(BASE_DIR, "assets"),
 )
-
 LOGIN_REDIRECT_URL = '/'
-
-
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #only for testing, comment out for production
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR,  "static")
-
 MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = "uploads/"
-
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
@@ -159,18 +145,14 @@ CKEDITOR_CONFIGS = {
         'width':1500,
     },
 }
-
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
-
 with open('email.txt') as f:
     EMAIL_HOST_USER = f.read().strip()
 
-
 with open('password.txt') as f:
     EMAIL_HOST_PASSWORD = f.read().strip()
-

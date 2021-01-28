@@ -1,23 +1,14 @@
+<!--Login template-->
+
 {% extends "base.html" %}
-
-
 {% block page_content %}
-
-
 
 <div class="container">
   <div class="row justify-content-center align-items-center" style="height:75vh;">
       <div class="col-auto border p-3">
-
-
-
         {% if user.is_authenticated %}
-  
-
         <meta http-equiv="refresh" content="0; url= {% url 'home' %} " />
         {% endif %}
-
-
 
           {% if form.errors %}
           <p class="bg-danger p-1">Incorrect Credentials</p>
@@ -42,17 +33,14 @@
               <td>{{ form.password }}</td>
           </tr>
           </table>
-<input type="submit" value="login" />
+          <input type="submit" value="login" />
           <input type="hidden" name="next" value="{{ next }}" />
           </form>
-
           <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
           <p><a href="{% url 'register' %}">New User? Sign Up today!</a></p>
       </div>
   </div>
 </div>
-
-
 {% endblock %}
 
 

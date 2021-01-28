@@ -23,17 +23,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('student/', include("student.urls")),
-    path('courses', include("courses.urls")),
-    path('tinymce/', include("tinymce.urls")),
-    path('', include("home.urls")),
+    path('student/', include("Components.student.urls")),
+    path('courses', include("Components.courses.urls")),
+    path('', include("Components.home.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('admin_panel/', include('admin_panel.urls')),
-
-
+    path('admin_panel/', include('Components.admin_panel.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
-
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns +=  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
