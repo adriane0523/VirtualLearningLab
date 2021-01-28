@@ -35,15 +35,11 @@ def class_detail(request, id_field, pk):
 
 @login_required
 def welcome_page(request, id_field):
-
-
     page = WelcomePage.objects.all().filter(courses = (str)(id_field) )
-
 
     if (not page.exists()):
         return render(request, "not_exists.html", {})
 
-   
     context = {
         "page": page,
     }
@@ -53,6 +49,7 @@ def welcome_page(request, id_field):
 @login_required
 def reading_material(request, id_field):
     page = ReadingMaterial.objects.all().filter(courses = (str)(id_field) )
+    
     if (not page.exists()):
         return render(request, "not_exists.html", {})
    

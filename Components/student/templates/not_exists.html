@@ -1,11 +1,8 @@
-
+<!--Page does not exist template-->
 {% extends "base2.html" %}
 {% block page_content %}
 
-
 <div id="wrapper">
-  
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -21,17 +18,15 @@
                 {% else %}
                 <li ><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
                 {% endif %} 
-              </small> 
-  
-     
-   
+              </small>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <div class="text-center"> 
         <h3 style="padding-top:10rem">Sorry, this page does not exists</h3>
-    <p>We are either still building this page or an error has occured.  <br>Please contact Admin for help</p> 
-    <input type=button value="Previous Page" onClick="javascript:history.go(-1);">
+        <p>We are either still building this page or an error has occured.  <br>Please contact Admin for help</p> 
+        <input type=button value="Previous Page" onClick="javascript:history.go(-1);">
+    </div>
 </div>
-    {% endblock %}
+{% endblock %}

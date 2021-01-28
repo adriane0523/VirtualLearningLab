@@ -11,8 +11,5 @@ class CoursesAdmin(admin.ModelAdmin):
             'fields': ['id']
         }),
     )
-
-
-
-
+    
 admin.site.register(Courses, CoursesAdmin)

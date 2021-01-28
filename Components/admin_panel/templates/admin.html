@@ -1,13 +1,7 @@
 {% extends "base2.html" %}
 {% block page_content %}
 
-
-
-
-
 <div id="wrapper">
-  
-
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
@@ -15,7 +9,6 @@
                 <a href=" {% url 'home' %} ">
                     E-Learning Lab
                 </a>
-     
             </li>
             <small>
                 {% if user.is_authenticated %}
@@ -46,11 +39,6 @@
             </li>
 
             {% endif %}
-
-              
-  
-     
-   
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -73,18 +61,8 @@
                         <a href= "/admin/student/post/?courses__id__exact={{ courses.id }}"> Add/Edit Modules</a> |
                         <a href= "/admin/student/connect/?courses__id__exact={{courses.id }}"> Add/Edit Connect</a> |
                         <a href= "/admin/student/readingmaterial/?courses__id__exact={{courses.id }}"> Add/Edit Reading Material</a> |
-                        <a href= "/admin/student/quiz/?courses__id__exact={{ courses.id }}"> Add/Edit Assessments</a> |
-         
-                    
-                    
-                    
+                        <a href= "/admin/student/quiz/?courses__id__exact={{ courses.id }}"> Add/Edit Assessments</a> |          
                         {% endfor %}
-                      
-
-                        
-
-
-
                     </div>
 
                 </div>

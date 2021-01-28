@@ -1,25 +1,14 @@
 
-
+<!--Main home page tempalte-->
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	
-
-</head>
-
-<body>
 <!--- Start LANDING PAGE Section -->
 <div class = "landing">
 	<div class = "home-wrap">
 		<div class = "home-inner">>
-
 		</div>
-
 	</div>
 </div>
 
@@ -27,12 +16,8 @@
 	<h1>Welcome to <br> E-LEARNING LAB</h1>
 	<h5>Empowering online communities with STEM education</h5>
 	<a type="button" href = "#about_us" class="btn btn-outline-light">Learn about the program</a>
-	
-
 </div>
 <!--- End LANDING PAGE Section -->
-
-
 
  <!--- Start ABOUT Section -->
  <div class = "about" id="about_us">
@@ -43,7 +28,6 @@
 			<iframe style ="padding-top: 1rem; padding-bottom: 1rem;" width="560" height="315" src="https://www.youtube.com/embed/sHvliCvdn0w" 
 			frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-	
 			<p class = "lead">The Cyber E-learning Hub is a brain child of Bridge2Africa Organization that leverages the power of
 				4.0 technologies to empower learning communities. We have seen our platform evolve from the
 				Cyber Project to a STEM platform and subsequently becoming a one stop E-Learning Hub which has
@@ -99,23 +83,10 @@
 				<div class="col-md-4"><img src= "{% static 'engineering.svg' %}" style="height: auto; width:5rem" >
 					<h3> STEM related subjects </h3>
 				</div>
-					
-				
-
-			</div>
-
-			
+			</div>		
 		 <div class="text-center" style="padding-bottom:2rem; padding-top: 4rem;">
 			<h3> Sign Up and Start Learning</h3>
 		 <a style="margin: 1rem;" type="button" class="btn btn-outline-dark" href = "{% url 'login' %}">Sign Up</a>
 		</div>
-
-
-</body>
-</html>
-
-
-
-
 
 {% endblock %}

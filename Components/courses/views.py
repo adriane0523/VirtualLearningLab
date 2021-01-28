@@ -10,6 +10,5 @@ def course(request):
     
     }
     
-
     return render(request, "course.html", context)
 

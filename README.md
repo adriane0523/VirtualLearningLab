@@ -76,6 +76,14 @@ $ pip install -m requirments.txt
 
 #run the app
 $  Python manage.py runserver
+
+#helpful commands:
+#updating static/assets folder
+$ python manage.py collectstatic
+
+#updating database models
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 ## Whats in the project ##
@@ -102,6 +110,8 @@ Holds the UI for courses
 Virutallearninglab folder
 Main folder, it holds the UI for login and register, base templates for each page, routing, and settings of the project
 
+asset/static folder=> holds the css files and images (there are two because when website is deployed it looks at static folder)
+media folder => upload photos (currently not working)
 
 ## Related links ##
 installing pip - https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/

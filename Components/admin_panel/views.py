@@ -8,7 +8,6 @@ def admin(request):
         courses = Courses.objects.all()
         context = {
             "courses": courses
-        
         }
         
 

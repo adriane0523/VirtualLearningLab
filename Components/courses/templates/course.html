@@ -6,9 +6,6 @@
     {% for courses in courses %}
     <h3><a href= "{% url 'welcome_page' courses.id %}"> {{ courses.name }}</a></h3>
     <p style="padding-bottom: 2rem;">{{ courses.description }}</p>
-
-
-
     {% endfor %}
 </div>
 {% endblock %}
