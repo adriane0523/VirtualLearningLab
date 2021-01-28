@@ -1,6 +1,7 @@
 
 
-<h1 align="center">E-Learning Lab (previously Virtual Learning Lab)</h1>
+<h1 align="center">E-Learning Lab</h1>
+<h5 align="center"> (previously Virtual Learning Lab) </h5>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/adriane0523/virtuallearnignlab?color=56BEB8">
