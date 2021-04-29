@@ -1,0 +1,148 @@
+
+/* Toggle Styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.footer{
+
+    background-color: #40474e;
+    color:white;
+    padding:2rem 0 2rem;
+    padding-top:1rem ;
+  
+  }
+
+  html *{
+    font-family: 'Roboto', sans-serif !important;
+
+  }
+  
+  footer img{
+  
+    margin:1rem 0;
+  }
+  .body{
+    overflow-x:  hidden;
+    font-family: 'Roboto', sans-serif;
+    color: #505962;
+  }
+  
+  /* Navigation */
+  .navbar{
+    text-transform: uppercase;
+    font-weight : 900;
+    font-size:.9rem;
+    letter-spacing: .1rem;
+    background-color: rgba(255, 255, 255, 0.6)!important;
+  }
+  .navbar-brand img{
+  /*height*/  
+    
+  }
+  .navbar-nav li{
+    padding-right: .7rem;
+  }
+  
+  .navbar-dark .navbar-nav .nav-link{
+    padding-top: .8rem;
+  }
+  
+  
+  /* landing page */
+  
+  .home-inner{
+    background: url(cube.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  
+  .caption{
+    width: 100%;
+    max-width: 100% ;
+    position: absolute;
+    top: 38%;
+    z-index: 1;
+    color: white;
+
+  }
+  
+  .caption h1{
+    font-size:  3.8rem;
+    font-weight: 700;
+    letter-spacing:  .3rem;
+    text-shadow: .1rem .1rem .8rem black;
+    padding-bottom: 1rem;
+  }
+  .caption h5{
+    font-size: 2rem;
+    text-shadow: .1rem .1rem .5rem black;
+    padding-bottom: .6rem;
+  
+  }
+  .btn-lg{
+    border-width: medium;
+    border-radius: 0;
+    padding: .6rem 1.3rem;
+    font-size: 1.1rem;
+  }
+  
+  /*============= COURSE SECTION =============*/
+  
+  .narrow {
+    width: 75%;
+    margin: 1.5rem auto;
+    padding-top: 2rem;
+  }
+  .narrow h1 {
+      font-size: 2.4rem;
+    }
+
+  .title {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+
+  @media (min-width: 250px) { 
+.caption h1{  font-size: 2.5rem;}
+.caption h5{  font-size: 1.2rem; padding-right: 2rem;} 
+.about p{font-size: 0.8rem;}
+.title h1{font-size: 2rem} 
+iframe{width: 300px; height: 300px;}
+}
+
+
+  
+@media (min-width: 576px) { 
+.caption h1{  font-size: 2.5rem;}
+.caption h5{  font-size: 1.4rem;}
+.about p{font-size: 0.8rem;}
+.title h1{font-size: 2.2rem}
+iframe{width: 500px; height: 300px;} }
+
+
+@media (min-width: 768px) { 
+.caption h1{  font-size:  2.8rem;}
+.caption h5{  font-size: 1.6rem;}
+.about p{font-size: 1rem;} 
+.title h1{font-size: 2.4rem} 
+iframe{width: 700px; height: 500px;}}
+
+
+@media (min-width: 992px) {
+.caption h1{  font-size:  3.3rem;}
+.caption h5{  font-size: 1.8rem;}
+.about p{font-size: 1.2rem;}
+.title h1{font-size: 2.6rem}
+iframe{width: 800px; height: 600px;}  }
+
+
+@media (min-width: 1200px) { 
+.caption h1{  font-size:  3.8rem;}
+.caption h5{  font-size: 2rem;}
+.about p{font-size: 1.2rem;}
+.title h1{font-size: 2.8rem}
+iframe{width: 800px; height: 600px;}}
+

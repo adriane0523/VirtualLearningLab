@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2" style="padding: 3rem 0rem;">
+    <h1>Courses</h1>
+    <hr>
+    {% for courses in courses %}
+    <h3><a href= "{% url 'welcome_page' courses.id %}"> {{ courses.name }}</a></h3>
+    <p style="padding-bottom: 2rem;">{{ courses.description }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

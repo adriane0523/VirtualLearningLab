@@ -1,0 +1,117 @@
+<!--Main home page tempalte-->
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<!--- Start LANDING PAGE Section -->
+<div>
+	{% if notifications %}
+	{% for notification in notifications %}
+	<div class="alert alert-info alert-dismissible fade show text-md-center" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		{{ notification.message }}
+	</div>
+	{% endfor %}
+	{% endif %}
+	<div class="row">
+		<div class="landing">
+			<div class="col-lg-12 col-md-12 col-sm-12 home-wrap">
+				<div class="home-inner">>
+					<!-- Note . currently needed to display Image -->
+					.
+				</div>
+			</div>
+		</div>
+
+		<div class="caption " style="padding-left: 10rem;">
+			<h1 class="">Welcome to <br> E-LEARNING LAB</h1>
+			<h5>Empowering online communities with STEM education</h5>
+			<a type="button" href="#about_us" class="btn btn-outline-light">Learn about the program</a>
+		</div>
+	</div>
+	<!--- End LANDING PAGE Section -->
+
+	<!--- Start ABOUT Section -->
+	<div class="about" id="about_us">
+		<div class="col-lg-12 narrow ">
+
+			<div class="text-center title">
+				<h1>About Us</h1>
+
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sHvliCvdn0w"
+						allowfullscreen></iframe>
+				</div>
+			</div>
+
+			<p class="lead">The Cyber E-learning Hub is a brain child of Bridge2Africa Organization that leverages the
+				power
+				of
+				4.0 technologies to empower learning communities. We have seen our platform evolve from the
+				Cyber Project to a STEM platform and subsequently becoming a one stop E-Learning Hub which has
+				grown to serve a global audience. <br><br>
+
+				<b>Our centre specialise in creating the next breakthroughs in the
+					field of AI, IoT, Robotics , Big Data, Virtual Reality, Cyber Security, Computer Science, Coding and
+					STEM Education to learners of all ages.
+					The Cyber learning Lab is a trusted compliment to the
+					conventional education since we profile emerging smart technologies and instructors from elite
+					universities. The thrust of our learning Lab is to consider the engagement factor, collaborative
+					learning or peer to peer learning, use of critical thinking skills and innovation through project
+					based
+					learning. </b><br></br>
+
+				This solution based platform facilitates both formative and summative assessments.
+				Students develop both cognitively and socially through integration as they meet other learners from
+				other parts of the world preparing them for the cultural dynamics of the 21st century. Bridge2Africa
+				is proud to present this Solution Based E- Learning Lab equipped with an E-Library integrated with
+				simulations, gamification for immersive learning experience. Indeed we empower learning online
+				communities through innovation
+				<br>
+				<br>
+			<h3 class="text-center">Virtual Learning Lab offers topics in:</h3>
+			</p>
+
+			<div class="row text-center">
+				<div class="col-md-3">
+					<img src="{% static 'security.svg' %}" style="height: auto; width:5rem">
+					<h3>Cybersecurity</h3>
+				</div>
+
+				<div class="col-md-3">
+					<img src="{% static 'big-data.svg' %}" style="height: auto; width:5rem">
+
+					<h3>AI/Big Data</h3>
+				</div>
+
+				<div class="col-md-3"><img src="{% static 'code.svg' %}" style="height: auto; width:5rem">
+					<h3>Programming</h3>
+				</div>
+
+				<div class="col-md-3"><img src="{% static 'iot.svg' %}" style="height: auto; width:5rem">
+					<h3> Iot Technology </h3>
+				</div>
+
+				<div class="col-md-4"><img src="{% static 'robot.svg' %}" style="height: auto; width:5rem">
+					<h3>Robotics </h3>
+				</div>
+
+				<div class="col-md-4"><img src="{% static 'virtual-reality.svg' %}" style="height: auto; width:5rem">
+					<h3>Virtual Reality </h3>
+				</div>
+
+				<div class="col-md-4"><img src="{% static 'engineering.svg' %}" style="height: auto; width:5rem">
+					<h3> STEM related subjects </h3>
+				</div>
+			</div>
+			<div class="text-center" style="padding-bottom:2rem; padding-top: 4rem;">
+				<h3> Sign Up and Start Learning</h3>
+				<a style="margin: 1rem;" type="button" class="btn btn-outline-dark" href="{% url 'login' %}">Sign Up</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block page_content %}
+
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card shadow">
+
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="mt-3">
+                                <h4>{{ user.username }}</h4>
+                                <p class="text-secondary mb-1">{{ user.profile.get_role_display }}</p>
+                                <p class="text-muted font-size-sm">{{ user.profile.location }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li
+                            class="bg-light list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>My Enrolled Courses</h6>
+                        </li>
+
+                        {% for course in enrolled_courses %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h7>{{ course.name | truncatechars:30 }}</h7>
+                            <span class="text-secondary"><a href="{% url 'welcome_page' course.id  %}">Visit</a></span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="card shadow mt-3">
+                    <div class="list-group list-group-flush">
+                        <div
+                            class="bg-light list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6>All Courses</h6>
+                            <button class="btn btn-sm btn-light" type="button" data-toggle="collapse"
+                                data-target=".collapseList" aria-expanded="false"
+                                aria-controls="collapseCourseListExample">
+                                <i class="mdi mdi-chevron-down"></i>
+                            </button>
+                        </div>
+
+                        <div class="collapse collapseList">
+                            <div class="card card-body">
+                                {% for course in courses_list %}
+                                <div class="list-group-item d-flex flex-wrap">
+
+                                    <h7 class="mr-auto">{{ course.name | truncatechars:20 }}</h7>
+                                    {% if course in enrolled_courses %}
+                                    <a class="mr-2 btn btn-danger btn-sm" href="{% url 'unenroll' course.id  %}">-</a>
+                                    {% else %}
+                                    <a class="mr-2 btn btn-success btn-sm" href="{% url 'enroll' course.id  %}">+</a>
+                                    {% endif %}
+                                    <span class="p-2 text-secondary">
+                                        <a href="{% url 'welcome_page' course.id  %}">Visit</a>
+                                    </span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-8">
+                <div class="card shadow mb-3">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        <div class="card-title mt-4 mb-0">
+                            <h4>User Information</h4>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Username</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.username }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Password</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                *************************
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.email }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Birthday</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.profile.birthdate }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Location</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.profile.location }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="update-profile">
+                    <div class="card shadow mb-3">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <div class="card-title mt-4 mb-0">
+                                <h4>Update Profile</h4>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card-body">
+
+                            <div class="col-sm-12">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ profile_form|crispy }}
+                                    <button class="btn btn-sm btn-light">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

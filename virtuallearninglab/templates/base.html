@@ -1,0 +1,96 @@
+<!---base template for the main page-->
+
+{% load static%}
+
+<!-- START Head Section -->
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-learning Lab</title>
+  <meta name="description" content="Online learning platform">
+  <meta name="keywords" content="E-Learning, E-Learning Lab, Learning, Electronic, Bridge2Africa">
+  <meta name="author" content="Adriane Inocencio">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="{%static '/style2.css' %}">
+  <link rel="stylesheet" href="{%static '/fixed.css' %}">
+</head>
+<!-- END Head Section -->
+
+<!-- START Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light  border-bottom">
+  <div class="container">
+    <a class="navbar-brand">E-Learning Lab</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}"><i class="mdi mdi-home-outline"></i>HOME</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'course' %}"><i class="mdi mdi-school-outline"></i>COURSES</a>
+        </li>
+
+        {% if user.is_superuser %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'admin' %}"><i class="mdi mdi-shield-account-outline"></i>ADMIN PANEL</a>
+        </li>
+        {% endif %}
+
+      </ul>
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'profile_detail' %}"><i class="mdi mdi-account-outline"></i>MY PROFILE</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'logout'%}?next={{request.path}}"><i class="mdi mdi-logout"></i>Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item active"><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+</nav>
+<!-- END Navbar Section -->
+
+<!-- START Custom Content Section -->
+<div class="container-fluid">
+  {% block page_content %}{% endblock %}
+</div>
+<!-- END Custom Content Section -->
+
+<!-- START Footer Section -->
+<footer class="footer text-center text-lg-start">
+  <div class="container p-4">
+
+    <div>
+      <h3><u> E-Learning Lab </u></h3>
+      <h5>Empowering online communities with STEM education </h5>
+    </div>
+
+    <div>
+      <h3> Contact us</h3>
+      Email: admin@elearning-lab.org
+    </div>
+
+    <div>
+      <small> © 2021 E-Learning-lab </small>
+    </div>
+
+  </div>
+</footer>
+<!-- END Footer Section -->

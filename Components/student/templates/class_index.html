@@ -1,0 +1,83 @@
+<!--List of Modules template-->
+{% extends "base2.html" %}
+{% block page_content %}
+
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href=" {% url 'home' %} ">
+                    E-Learning Lab
+                </a>
+            </li>
+            <small>
+                {% if user.is_authenticated %}
+                <li style="color: white;">Welcome, {{ user.get_username }}</li>
+                <li class="mx-auto">
+                    <a href="{% url 'profile_detail' %}"><i class="mdi mdi-account-outline"></i> My Profile</a>
+                </li>
+                <li style="padding-left:1rem; padding-bottom: 2em;"><a
+                        href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                {% endif %}
+            </small>
+            <h4 style="color:white; padding-left: 1rem;">Course Links:</h4>
+            <li>
+                <a href="{% url 'welcome_page' posts.0.courses.id %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'class_index' posts.0.courses.id %}">Modules</a>
+            </li>
+            <li>
+                <a href="{% url 'connect' posts.0.courses.id %}">Connect</a>
+            </li>
+            <li>
+                <a href="{% url 'reading_material' posts.0.courses.id %}">Reading Material</a>
+            </li>
+            <li>
+                <a href="{% url 'discussions' posts.0.courses.id %}">Discussion Boards</a>
+            </li>
+
+            <li>
+                <a href="{% url 'quiz_index' posts.0.courses.id %}">Assessments</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    <div class="container-fluid">
+                        <div class="col-md-8 offset-md-2">
+                            <h1>Modules</h1>
+                            <hr>
+                            {% for post in posts %}
+                            <h2><a href="{% url 'class_detail' post.courses.id post.pk%}">{{ post.title }}</a></h2>
+                            <p>{{ post.description }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+{% endblock %}
