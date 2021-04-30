@@ -26,13 +26,11 @@ urlpatterns = [
     path('student/', include("Components.student.urls")),
     path('courses', include("Components.courses.urls")),
     path('', include("Components.home.urls")),
-    path('profile/', include("Components.profile.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin_panel/', include('Components.admin_panel.urls')),
-    path("student/discussion_board/", include('Components.discussion_board.urls')),
     path('tinymce/', include('tinymce.urls')),
-    path('quiz/', include("Components.quiz.urls")),
+    path('quizapp/', include("Components.quizapp.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

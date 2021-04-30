@@ -10,40 +10,32 @@
             <li class="sidebar-brand">
                 <a href="{% url 'home'%}">
                     E-Learning Lab
-                </a>
+                </a>   
             </li>
             <small>
                 {% if user.is_authenticated %}
                 <li style="color: white;">Welcome, {{ user.get_username }}</li>
-                <li class="mx-auto">
-                    <a href="{% url 'profile_detail' %}"><i class="mdi mdi-account-outline"></i> My Profile</a>
-                </li>
-                <li style="padding-left:1rem; padding-bottom: 2em;"><a
-                        href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                <li style="padding-left:1rem; padding-bottom: 2em;"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
                 {% else %}
-                <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-                {% endif %}
-            </small>
-            <h4 style="color:white; padding-left: 1rem;">Course Links:</h4>
-            <li>
+                <li ><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
+                {% endif %} 
+            </small> 
+                <h4 style="color:white; padding-left: 1rem;">Course Links:</h4>
+                <li >
                 <a href="{% url 'welcome_page' page.0.courses.id %}">Home</a>
-            </li>
-            <li>
+                </li>
+                <li>
                 <a href="{% url 'class_index' page.0.courses.id %}">Modules</a>
-            </li>
-            <li>
+                </li>
+                <li >
                 <a href="{% url 'connect' page.0.courses.id %}">Connect</a>
-            </li>
-            <li>
+                </li>
+                <li >
                 <a href="{% url 'reading_material' page.0.courses.id %}">Reading Material</a>
-            </li>
-            <li>
-                <a href="{% url 'discussions' page.0.courses.id %}">Discussion Boards</a>
-            </li>
-            <li>
-                <a href="{% url 'quiz_index' page.0.courses.id  %}">Assessments</a>
-            </li>
-
+                </li>
+                <li >
+                <a href="{% url 'quiz' page.0.courses.id %}">Assessments</a>
+                </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -67,12 +59,12 @@
     <!-- /#page-content-wrapper -->
 </div>
 <!-- /#wrapper -->
-<!-- Menu Toggle Script -->
+ <!-- Menu Toggle Script -->
 <script>
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
 </script>
 
 {% endblock %}

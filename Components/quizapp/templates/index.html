@@ -1,0 +1,64 @@
+<DOCTYPE html>
+    <head>
+        <title>Quiz For Demo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#but1").click(function(){
+                    $(".tb").show();
+                    $(".rb").attr("disabled", true);
+                });
+            });
+            function getanswers(){
+                console.log("BUTTON CLICK");
+                document.getElementById(UserAnswers).innerHTML = "";
+                var e = document.getElementsByTagName('input');
+                console.log("HEEERE");
+                for(i = 0; i < e.length; i++)
+                {
+                    console.log("here");
+                    if(e[i].type =="radio")
+                    {
+                        if(e[i].checked){
+                            document.getElementById(UserAnswers).innerHTML += "Q " + e[i].name + " The answer you got is: " + e[i].value + " " ;
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body> 
+        <center>
+            <h1>First Quiz</h1>
+            <hr/>
+        </center>
+        <div style = "padding-left: 30px;">            
+        {% for result in Exam %}
+        <table>
+            <tr>
+                <td>Question) {{result.Question}} ? </td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="option1" name="{{result.id}}"  class="rb" value="{{result.Option1}}"> {{result.Option1}}</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="option2" name="{{result.id}}" class="rb" value="{{result.Option2}}"> {{result.Option2}}</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="option3" name="{{result.id}}" class="rb" value="{{result.Option3}}"> {{result.Option3}}</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="option4" name="{{result.id}}" class="rb" value="{{result.Option4}}"> {{result.Option4}}</td>
+            </tr>
+            <tr>
+                <td><label id="correctAns" class="tb" style="display: none; color: green"><b>{{result.CorrectAns}}</b></label></td>
+            </tr>
+        </table>
+        {% endfor %}
+            <hr/>
+            <input type="submit" value="Click For Result" id="but1" onclick="getAnswers;"/>
+            <hr/>
+            
+    </div>
+    </body>
+</DOCTYPE html>
