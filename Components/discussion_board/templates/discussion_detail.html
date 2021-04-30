@@ -1,0 +1,531 @@
+{% extends 'base2.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block page_content %}
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="{% url 'home'%}">
+                    E-Learning Lab
+                </a>
+            </li>
+            <small>
+                {% if user.is_authenticated %}
+                <li style="color: white;">Welcome, {{ user.get_username }}</li>
+                <li class="mx-auto">
+                    <a href="{% url 'profile_detail' %}"><i class="mdi mdi-account-outline"></i> My Profile</a>
+                </li>
+                <li style="padding-left:1rem; padding-bottom: 2em;"><a
+                        href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                {% endif %}
+            </small>
+            <h4 style="color:white; padding-left: 1rem;">Course Links:</h4>
+            <li>
+                <a href="{% url 'welcome_page' discussion.courses.id %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'class_index' discussion.courses.id %}">Modules</a>
+            </li>
+            <li>
+                <a href="{% url 'connect' discussion.courses.id %}">Connect</a>
+            </li>
+            <li>
+                <a href="{% url 'reading_material' discussion.courses.id %}">Reading Material</a>
+            </li>
+            <li>
+                <a href="{% url 'discussions' discussion.courses.id %}">Discussion Boards</a>
+            </li>
+            <li>
+                <a href="{% url 'quiz_index' discussion.courses.id %}">Assessments</a>
+            </li>
+        </ul>
+    </div>
+    <!-- END Sidebar -->
+
+    <div id="page-content-wrapper" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <!-- Notification Section on successful creation -->
+        {% if new_reply %}
+        <div class="alert alert-success" role="alert">
+            Your reply has been added
+        </div>
+        {% endif %}
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+            Your comment has been added
+        </div>
+        {% endif %}
+        <!-- END Notification Section -->
+
+        <!-- Discussion Topic Header -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Toggle Menu Button -->
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+
+                    <div class="col-md-8 card mb-4 mt-3 top mx-auto shadow">
+                        <div class="card-body">
+                            <h1>{% block title %} {{ discussion.title }} {% endblock title %}</h1>
+                            <p class=" text-muted">
+                                {% if discussion.created_by.is_staff %}
+                                <i class="mdi mdi-shield-account-outline"></i>
+                                {% endif %}
+                                {{ discussion.created_by }} | {{ discussion.created_on }}
+                            </p>
+                            <p class="card-text ">{{ discussion.content | safe }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Discussion Topic Display -->
+
+
+        <!-- Comments with Replies Display -->
+        <div id="comment-section" class="col-lg-12">
+            <div class="col-md-8 card mb-4 mt-3 mx-auto shadow">
+                <div class="card-body">
+                    <!-- comments -->
+                    <h2>Comments</h2>
+
+                    <!-- Button trigger modal (pop-up) for CommentForm -->
+                    <!-- Note must pass in variable data as data-whatever value -->
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                        data-target="#commentModal">
+                        <i class="mdi mdi-pencil-plus"></i> New Comment
+                    </button>
+
+                    <!-- Sort Buttons -->
+                    <span class="d-inline-block float-sm-right">
+                        Sort By:
+                        <a class="btn btn-sm btn-light " href="?order=newest#comment-section">Newest</a>
+                        <a class="btn btn-sm btn-light" href="?order=best#comment-section">Most Liked</a>
+                    </span>
+                    <!-- END Sort Buttons -->
+
+                    {% for comment in comments %}
+                    <hr>
+                    <div class="comments" style="padding: 10px;">
+                        <!-- If removed, don't render information -->
+                        {% if comment.is_removed %}
+                        <p class="font-weight-bold">
+                            comment deleted
+                        </p>
+                        deleted
+                        <!-- Otherwise render all comment information -->
+                        {% else %}
+                        <div class="font-weight-bold">
+                            {% if comment.created_by.is_staff %}
+                            <i class="mdi mdi-shield-account-outline"></i>
+                            {% endif %}
+                            {{ comment.created_by }}
+                            <span class=" text-muted font-weight-normal" style="font-size: .9em">
+                                {{ comment.created_on }}
+                            </span>
+
+                            <!-- Options Dropdown for user who created the reply -->
+                            {% if comment.created_by == user and comment.is_removed == False %}
+                            <span class="ml-auto mb-auto">
+                                <div class="btn-group float-right">
+                                    <button type="button" class="btn btn-light btn-sm rounded" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </button>
+
+                                    <!-- Edit Reply Button Trigger for form -->
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <button class="dropdown-item" type="button" data-toggle="collapse"
+                                            data-target=".collapseCommentUpdateForm{{ comment.id }}"
+                                            aria-expanded="false" aria-controls="collapseExample"><i
+                                                class="mdi mdi-comment-edit"></i>
+                                            Edit Comment
+                                        </button>
+                                        <!--  END Reply Button Trigger for form -->
+
+                                        <!-- Delete Comment Form -->
+                                        <form class="confirm-delete" method="post" action="."
+                                            data-object-id="{{ comment.id }}"
+                                            data-url="{% url 'delete_comment' comment.pk %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item"><i
+                                                    class="mdi mdi-delete"></i>Delete</button>
+                                        </form>
+                                        <!-- END Delete Comment Form -->
+                                    </div>
+                                </div>
+                            </span>
+                            {% endif %}
+                            <!-- END Options dropdown -->
+
+                            <!-- Options Dropdown for staff who created the reply -->
+                            {% if user.is_staff %}
+                            <span class="ml-auto mb-auto">
+                                <div class="btn-group float-right pr-3">
+                                    <button type="button" class="btn btn-warning btn-sm rounded" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical"></i>
+                                    </button>
+
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- Delete Comment Form -->
+                                        <form class="confirm-delete" method="post" action="."
+                                            data-object-id="{{ comment.id }}"
+                                            data-url="{% url 'delete_comment' comment.pk %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item"><i
+                                                    class="mdi mdi-delete"></i>DELETE AS STAFF</button>
+                                        </form>
+                                        <!-- END Delete Comment Form -->
+                                    </div>
+                                </div>
+                            </span>
+                            {% endif %}
+                            <!-- END Options for staff dropdown -->
+                        </div>
+
+                        <!-- Start Comment Content Display -->
+                        <div class="mt-3 mb-2">
+                            {{ comment.content | linebreaks | wordwrap:80 }}
+                        </div>
+                        <!-- END Comment Content Display -->
+
+                        <!--  Update Comment Form -->
+                        <div class="collapse collapseCommentUpdateForm{{ comment.id }}">
+                            <form method="post" action="{% url 'update_comment' comment.pk %}">
+                                {% csrf_token %}
+                                {{ comment_form|crispy }}
+                                <button type="submit" class="btn btn-sm btn-light">Save Changes</button>
+                            </form>
+                        </div>
+                        <!-- END Update Comment From -->
+
+                        {% endif %}
+
+                        <div class="mt-2">
+                            <div class="row align-items-sm-center p-1">
+
+                                <!-- Button for a single comment's replies collapse -->
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <button class="btn btn-sm btn-dark" type="button" data-toggle="collapse"
+                                        data-target="#collapseReply{{comment.id}}" aria-expanded="false"
+                                        aria-controls="collapseReply{{comment.id}}">
+                                        View {{comment.replies.count}} Replies
+                                    </button>
+                                </div>
+                                <!-- END Button for a single comment's replies collapse -->
+
+                                <!-- Button trigger for ReplyForm -->
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <button class="btn btn-sm btn-light" type="button" data-toggle="collapse"
+                                        data-target=".collapseReplyForm{{comment.id}}" aria-expanded="false"
+                                        aria-controls="collapseReplyExample">
+                                        <i class="mdi mdi-message-reply-text"></i> New Reply
+                                    </button>
+                                </div>
+                                <!-- END Button trigger for ReplyForm -->
+
+
+
+                                <!-- Upvote Buttons for comments -->
+                                <div class="offset-3 col-lg-3 col-md-3 col-sm-3">
+                                    <div class="btn float-sm-right upvoteComment{{comment.id}}">
+                                        {{ comment.votes.count }}
+                                    </div>
+
+                                    <form class="upvote float-sm-right" data-unique-comment-id="{{comment.id}}"
+                                        method=" post" action="." data-url="{% url 'upvote_comment' comment.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn text-muted btn-link"><i
+                                                class="mdi mdi-thumb-up"></i></button>
+                                    </form>
+                                </div>
+                                <!-- END Upvote Buttons for comments -->
+                            </div>
+
+
+                            <!-- ReplyForm -->
+                            <div class="collapse collapseReplyForm{{comment.id}}">
+                                <form method="post" style="margin-top: 1.3em;">
+                                    {% csrf_token %}
+                                    {{ reply_form|crispy }}
+                                    <input type="hidden" id="parent_id" name="parent_id" value="{{ comment.id }}" />
+                                    <button type="submit" class="btn btn-sm btn-dark">Reply</button>
+                                </form>
+                            </div>
+                            <!-- END ReplyForm  -->
+                        </div>
+                    </div>
+
+                    <!-- Display Replies for each comment -->
+                    <div class="collapse" id="collapseReply{{comment.id}}">
+                        {% for reply in comment.replies.all %}
+                        {% if reply.comment.id == comment.id %}
+                        <br>
+                        <div>
+                            <div class="card-body border-left pl-4 pt-1 pb-1 pr-4">
+                                <div class="font-weight-bold">
+                                    {% if reply.created_by.is_staff %}
+                                    <i class="mdi mdi-shield-account-outline"></i>
+                                    {% endif %}
+                                    {{ reply.created_by }}
+                                    <span class="text-muted font-weight-normal" style="font-size: .8em">
+                                        {{ reply.created_on }}
+                                    </span>
+
+                                    <!-- Options Dropdown for user who created the reply -->
+                                    {% if reply.created_by == user %}
+                                    <span class="ml-auto mb-auto">
+                                        <div class="btn-group float-right">
+                                            <button type="button" class="btn btn-light btn-sm rounded"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="mdi mdi-dots-vertical"></i>
+                                            </button>
+
+
+                                            <!-- Edit Reply Button Trigger for form -->
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <button class="dropdown-item" type="button" data-toggle="collapse"
+                                                    data-target=".collapseUpdateReplyForm{{ comment.id }}"
+                                                    aria-expanded="false" aria-controls="collapseExample"><i
+                                                        class="mdi mdi-comment-edit"></i>
+                                                    Edit Reply
+                                                </button>
+                                                <!--  END Reply Button Trigger for form -->
+                                                <!-- Delete Reply Form -->
+                                                <form class="confirm-delete" method="post" action="."
+                                                    data-object-id="{{ reply.id }}"
+                                                    data-url="{% url 'delete_reply' reply.pk %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="dropdown-item"><i
+                                                            class="mdi mdi-delete"></i>Delete
+                                                    </button>
+                                                </form>
+                                                <!-- END Delete Reply Form -->
+                                            </div>
+                                        </div>
+                                    </span>
+                                    <!-- END Options dropdown -->
+
+                                    {% endif %}
+
+                                    <!-- Options Dropdown for Staff to moderate replies -->
+                                    {% if user.is_staff %}
+
+                                    <span class="ml-auto mb-auto ">
+                                        <div class="btn-group float-right pr-3">
+                                            <button type="button" class="btn btn-warning btn-sm rounded"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="mdi mdi-dots-vertical"></i>
+                                            </button>
+
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <!-- Delete Reply Form -->
+                                                <form class="confirm-delete" method="post" action="."
+                                                    data-object-id="{{ reply.id }}"
+                                                    data-url="{% url 'delete_reply' reply.pk %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="dropdown-item"><i
+                                                            class="mdi mdi-delete"></i>DELETE AS STAFF</button>
+                                                </form>
+                                                <!-- END Delete Reply Form -->
+                                            </div>
+                                        </div>
+                                    </span>
+
+                                    <!-- END Options dropdown -->
+
+                                    {% endif %}
+
+                                </div>
+                                <p class="pl-3">{{ reply.reply | linebreaks | wordwrap:80 }}</p>
+
+                                <!-- Upvote Button for reply -->
+                                <div class="row align-items-sm-center m-0">
+                                    <span class="col ml-auto">
+                                        <p class="btn float-sm-right upvoteReply{{reply.id}}">
+                                            {{ reply.votes.count }}
+                                        </p>
+
+                                        <form class="float-right upvoteReply" data-unique-reply-id="{{reply.id}}"
+                                            method="post" action="." data-url="{% url 'upvote_reply' reply.id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-link text-muted float-sm-right"><i
+                                                    class="mdi mdi-thumb-up"></i></button>
+                                        </form>
+                                    </span>
+                                </div>
+                                <!-- END Upvote Buttons for comments -->
+
+                            </div>
+
+                            {% if reply.created_by == user %}
+
+                            <!-- Update Reply Form -->
+                            <div class="collapse collapseUpdateReplyForm{{ comment.id }}">
+                                <form method="post" action="{% url 'update_reply' reply.pk %}">
+                                    {% csrf_token %}
+                                    {{ reply_form|crispy }}
+                                    <button type="submit" class="btn btn-sm btn-light">Save Changes</button>
+                                </form>
+                            </div>
+                            <!-- END Update Reply Form -->
+
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <!-- END Display Replies -->
+
+                    </div>
+                    {% endfor %}
+
+                    <!-- Button trigger modal (pop-up) for CommentForm -->
+                    <br>
+                    <button type="button" class="btn col-lg-12 btn-sm btn-primary" data-toggle="modal"
+                        data-target="#commentModal">
+                        <i class="mdi mdi-pencil-plus"></i> New Comment
+                    </button>
+                    <br>
+
+                </div>
+            </div>
+
+            <!-- CommentForm Modal -->
+            <div class="modal" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="commentModalLabel">Create Comment</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <form method="post" style="margin-top: 1.3em;">
+                            <div class="modal-body">
+                                {% csrf_token %}
+                                {{ comment_form|crispy }}
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-dark btn-md">
+                                    Comment</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- END CommentForm modal -->
+
+
+        </div>
+    </div>
+    <!-- END Comments Display -->
+
+
+
+    <!-- Pagination -->
+    {% if comments.has_other_pages %}
+    <ul class="pagination pagination-lg justify-content-center">
+        {% if comments.has_previous %}
+        <li class="page-item"><a class="page-link"
+                href="?page={{ comments.previous_page_number }}&order={{ order }}">&laquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+        {% endif %}
+        {% for i in comments.paginator.page_range %}
+        {% if comments.number == i %}
+        <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}&order={{ order }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if comments.has_next %}
+        <li><a class="page-link" href="?page={{ comments.next_page_number }}&order={{ order }}">&raquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
+</div>
+<!-- Toggle Menu Feature -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+<!-- Upvote Comment -->
+<script>
+    $.ajaxSetup({
+        data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+
+    // Note must use class as an id is unique to one element on the page
+    $(".upvote").submit(function (e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        var form = $(this);
+        var comment_id = $(this).data("unique-comment-id")
+        var url = form.data('url');
+
+        $.post(url).done(function (data) {
+            // get your response data
+            $(".upvoteComment" + comment_id).text(data.count);
+        });
+
+    });
+</script>
+
+<!-- Upvote Reply (no reload) -->
+<script>
+    $.ajaxSetup({
+        data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+
+    // Note must use class as an id is unique to one element on the page
+    $(".upvoteReply").submit(function (e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        var form = $(this);
+        var reply_id = $(this).data("unique-reply-id")
+        var url = form.data('url');
+
+        $.post(url).done(function (data) {
+            // get your response data
+            $(".upvoteReply" + reply_id).text(data.count);
+        });
+
+    });
+</script>
+
+<!-- Delete Confirmation -->
+<script>
+    $(".confirm-delete").click(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var object_id = $(this).data("object-id");
+        var url = form.data('url');
+        var ask = confirm('Are you sure you want to delete this item?');
+
+        if (ask && object_id) {
+            $.post(url).done(function () {
+                window.location.reload(true);
+            })
+            // pass in true since we need to query again to update paginator
+
+        }
+    });
+</script>
+
+{% endblock page_content %}

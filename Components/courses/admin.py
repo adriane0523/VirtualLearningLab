@@ -1,7 +1,7 @@
 from django.contrib import admin
 from Components.courses.models import Courses
 from Components.student.models import Post, WelcomePage, Connect, ReadingMaterial
-from Components.quizapp.models import Quiz
+from Components.quiz.models import Quiz
 # Inlines for Course Model on Admin Site
 class WelcomePageStackedInline(admin.StackedInline):
     model = WelcomePage     # Associates model with particular Inline (StackedInline in this case)
@@ -43,6 +43,9 @@ class CoursesAdmin(admin.ModelAdmin):
         }),
         ('Unique Id (Do not edit)', {
             'fields': ['id']
+        }),
+        ('Students', {
+            'fields': ['users']
         }),
     )
   

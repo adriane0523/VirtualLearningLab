@@ -7,6 +7,7 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
+
                 <a href=" {% url 'home' %} ">
                     E-Learning Lab
                 </a>
@@ -14,18 +15,22 @@
             <small>
                 {% if user.is_authenticated %}
                 <li style="color: white;">Welcome, {{ user.get_username }}</li>
-                <li style="padding-left:1rem; padding-bottom: 2em;"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
+                <li class="mx-auto">
+                    <a href="{% url 'profile_detail' %}"><i class="mdi mdi-account-outline"></i> My Profile</a>
+                </li>
+                <li style="padding-left:1rem; padding-bottom: 2em;"><a
+                        href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
                 {% else %}
-                <li ><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
-                {% endif %} 
-              </small>
+                <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                {% endif %}
+            </small>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
 
-    <div class="text-center"> 
-        <h3 style="padding-top:10rem">Sorry, this page does not exists</h3>
-        <p>We are either still building this page or an error has occured.  <br>Please contact Admin for help</p> 
+    <div class="text-center">
+        <h3 style="padding-top:10rem">Sorry, this page does not exist yet</h3>
+        <p>We are either still building this page or an error has occured. <br>Please contact Admin for help</p>
         <input type=button value="Previous Page" onClick="javascript:history.go(-1);">
     </div>
 </div>

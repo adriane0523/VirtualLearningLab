@@ -1,6 +1,6 @@
 from django.contrib import admin
 from Components.student.models import Post, WelcomePage, Connect, ReadingMaterial
-from Components.quizapp.models import Quiz, Question
+# from Components.quizapp.models import Quiz, Question
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'courses')
@@ -81,8 +81,8 @@ class ReadingMaterialAdmin(admin.ModelAdmin):
         #}),
     #)
     
-admin.site.register(Question)
-admin.site.register(Quiz)
+# admin.site.register(Question)
+# admin.site.register(Quiz)
 #admin.site.register(Quiz, QuizAdmin)
 admin.site.register(ReadingMaterial, ReadingMaterialAdmin)
 admin.site.register(Connect, ConnectPageAdmin )

@@ -1,0 +1,62 @@
+{% extends 'base2.html' %}
+{% load i18n %}
+
+{% block page_content %}
+<div id="wrapper">
+
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="{% url 'home'%}">
+          E-Learning Lab
+        </a>
+      </li>
+      <small>
+        {% if user.is_authenticated %}
+        <li style="color: white;">Welcome, {{ user.get_username }}</li>
+        <li class="mx-auto">
+          <a href="{% url 'profile_detail' %}"><i class="mdi mdi-account-outline"></i> My Profile</a>
+        </li>
+        <li style="padding-left:1rem; padding-bottom: 2em;"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+        </li>
+        {% else %}
+        <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+        {% endif %}
+      </small>
+      <h4 style="color:white; padding-left: 1rem;">Course Links:</h4>
+      <li>
+        <a href="{% url 'home'  %}">Home</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="page-content-wrapper">
+    <div class="container">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        <div class="col-md-8 offset-md-2">
+          <h2>{{ quiz.title }}</h2>
+          <h4>{% trans "Category" %}: {{ quiz.category }}</h4>
+          {% if quiz.single_attempt %}
+          <h4>{% trans "You will only get one attempt at this quiz" %}.</h4>
+          {% endif %}
+          <p>{{ quiz.description }}</p>
+          <p>
+            <a class="btn btn-primary" href="{% url 'quiz_question' quiz_name=quiz.url %}">
+              {% trans "Start quiz" %}
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Menu Toggle Script -->
+<script>
+  $("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+</script>
+{% endblock %}

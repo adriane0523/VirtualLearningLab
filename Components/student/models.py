@@ -11,7 +11,7 @@ class Post(models.Model):
     video = EmbedVideoField(blank=True)
     title = models.CharField(max_length=255)
     content = RichTextUploadingField(blank=True)
-    courses = models.ForeignKey('courses.Courses',  on_delete=models.CASCADE, to_field= 'id', default="dd390af4-07f1-4597-b48a-f585fd79289d" )
+    courses = models.ForeignKey('courses.Courses', related_name="posts",  on_delete=models.CASCADE, to_field= 'id', default="dd390af4-07f1-4597-b48a-f585fd79289d" )
     description = models.TextField( default= "", blank=True)
 
     class Meta:

@@ -11,11 +11,15 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 
 from .forms import CustomUserCreationForm
-
+from .models import HomeNotification
 
 
 def home(request):
-    return render(request, 'home.html', {})
+    # Get all active HomeNotifications and send them to the homepage template
+    notifications = HomeNotification.objects.all().filter(active=True)
+    context = {'notifications': notifications}
+
+    return render(request, 'home.html', context)
 
 
 def register(request):
