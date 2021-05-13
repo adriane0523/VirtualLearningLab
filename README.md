@@ -20,6 +20,9 @@ The website is a learning platform aiming to bring STEM content to students all 
 and an admin panel to add classes. It uses the Django admin tools and user 
 authentication technology.
 
+The project is now part of ASU's EPICS program where they are aiming to improve this website and working with our Community Partner Bridge2Africa to help increase access of STEM education all throughout in South Africa.
+
+
 (You can use username: demo, password: demo1 to login to the website) 
 
 Admin panel demo: https://www.youtube.com/embed/PvA5yy0Z74E
