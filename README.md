@@ -3,18 +3,6 @@
 <h1 align="center">E-Learning Lab</h1>
 <h5 align="center"> (previously Virtual Learning Lab) </h5>
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/adriane0523/virtuallearnignlab?color=56BEB8">
-
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/adriane0523/virtuallearnignlab?color=56BEB8">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/adriane0523/virtuallearnignlab?color=56BEB8">
-
-  <img alt="License" src="https://img.shields.io/github/license/adriane0523/virtuallearnignlab?color=56BEB8">
-
-</p>
-
-
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -31,6 +19,9 @@ This website is for a Non-profit in South Africa called Bridge2Africa.
 The website is a learning platform aiming to bring STEM content to students all over the world. The website contains different courses where students can learn 
 and an admin panel to add classes. It uses the Django admin tools and user 
 authentication technology.
+
+The project is now part of ASU's EPICS program where they are aiming to improve this website and working with our Community Partner Bridge2Africa to help increase access of STEM education all throughout in South Africa.
+
 
 (You can use username: demo, password: demo1 to login to the website) 
 
