@@ -53,7 +53,7 @@ Download an IDE, preferably [VS code](https://code.visualstudio.com/download). L
 
 ```bash
 # Clone this project
-git clone https://github.com/E-Learning-Lab/VirtualLearningLab.git
+git clone https://github.com/Abhiraj03/E-Learning-Lab.git
 
 # Access
 cd VirtualLearningLab/
