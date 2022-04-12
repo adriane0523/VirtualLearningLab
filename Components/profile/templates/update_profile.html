@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block page_content %}
+
+<div id="update-profile" class="m-auto col-lg-6 align-items-center">
+    <div class="card shadow mb-3">
+        <div class="d-flex flex-column text-center">
+            <div class="card-title mt-4 mb-0">
+                <h4>Update Profile</h4>
+            </div>
+        </div>
+        <hr>
+        <div class="card-body">
+
+            <div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ profile_form|crispy }}
+                    <button class="btn btn-block btn-dark" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

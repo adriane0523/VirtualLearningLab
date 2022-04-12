@@ -1,0 +1,30 @@
+<!---base template for the student courses page-->
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Online learning platform">
+<meta name="keywords" content="E-Learning, E-Learning Lab, Learning, Electronic, Bridge2Africa">
+<meta name="author" content="Adriane Inocencio">
+
+<title>E-learning Lab</title>
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{%static '/style.css' %}">
+<!-- Material Design Icons -->
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+  integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<div id="Container">
+
+  {% block page_content %}{% endblock %}
+
+</div>
+
+</div>
+
+</html>
