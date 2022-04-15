@@ -9,7 +9,11 @@
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card shadow">
+                    {% if user.profile.profile_image %}
                     <img class="card-img-top" src="{{ user.profile.profile_image.url }}" alt="Card image cap">
+                    {% else %}
+                    <img class="card-img-top" src="/static/default_image.jpg" alt="Card image cap">
+                    {% endif %}
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <div class="mt-3">

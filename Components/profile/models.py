@@ -22,7 +22,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=30, blank=False,default="")
     last_name = models.CharField(max_length=30, blank=False, default="")
     grade_level = models.IntegerField(default=0)
-    profile_image = models.ImageField(upload_to='profiles/')#, default='default_pfp.jpg'
+    profile_image = models.ImageField(upload_to='profiles/', default='profiles/default_pfp.jpg')#, default='default_pfp.jpg'
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
