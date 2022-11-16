@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+  * {
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: lightgrey;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .container > h1 {
+    padding: 20px 0;
+  }
+  .cart {
+    display: flex;
+  }
+  .products {
+    flex: 0.75;
+  }
+  .product {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid silver;
+    margin-bottom: 20px;
+  }
+  .product:hover {
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+  }
+  .product > img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .product > img:hover {
+    transform: scale(1.04);
+  }
+  .product-info {
+    padding: 20px;
+    width: 100%;
+    position: relative;
+  }
+  .product-name,
+  .product-price,
+  .product-offer {
+    margin-bottom: 20px;
+  }
+
+  .product-remove {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 25px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .product-remove:hover {
+    background-color: white;
+    color: green;
+    font-weight: 600;
+    border: 1px solid green;
+  }
+
+  .product-quantity > input {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+  }
+  .fa {
+    margin-right: 5px;
+  }
+  .cart-total {
+    flex: 0.25;
+    margin-left: 20px;
+    padding: 20px;
+    height: 240px;
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
+  .cart-total p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  .cart-total a {
+    display: block;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    background-color: tomato;
+    color: white;
+    text-decoration: none;
+  }
+  .cart-total a:hover {
+    background-color: aqua;
+  }
+  @media screen and (max-width: 500px) {
+    .remove {
+      display: none;
+    }
+    .product {
+      height: 150px;
+    }
+    .product > img {
+      height: 150px;
+      width: 200px;
+    }
+    .product-name,
+    .product-price,
+    .product-offer {
+      margin-bottom: 10px;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .cart {
+      flex-direction: column;
+    }
+    .cart-total {
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+  }
+  @media screen and (max-width: 1220px) {
+    .container {
+      max-width: 95%;
+    }
+  }
+</style>
+<html>
+  <head>
+    <title>E-Learning Lab Shopping Cart</title>
+    <link rel="stylesheet" type="text/css" href="cart.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1><font size="6">Shopping Cart</font></h1>
+      <div class="cart">
+        <div class="products">
+          <div class="product">
+            <img
+              src="https://media.istockphoto.com/photos/robotic-arm-isolated-picture-id1045170110?k=20&m=1045170110&s=612x612&w=0&h=tPR3pCxOJ6CT5TWCRphmwJrKYHVd8e0QQK50IGXfNz4="
+            />
+            <div class="product-info">
+              <h3 class="product-name">Robotic Arm</h3>
+              <div class="product-description">
+                This is a robotic play-arm geared for children to tinker around
+                with.
+              </div>
+              &nbsp;
+              <h4 class="product-price">$<span id="productPrice1">25</span></h4>
+              <p class="product-quantity">
+                Add to Cart:
+                <button onclick="totalClick(1)">+</button>
+                <span id="totalClicks">0</span>
+                <button onclick="totalClick(-1)">-</button>
+                <button onclick="totalClick(0)">Reset</button>
+                <script>
+                  function totalClick(click) {
+                    const totalClicks = document.getElementById("totalClicks");
+                    const productPrice =
+                      document.getElementById("productPrice1");
+                    if (click == 0) {
+                      totalClicks.innerText = 0;
+                    } else {
+                      const sumvalue = parseInt(totalClicks.innerText) + click;
+                      const newPrice = 25 * sumvalue;
+                      console.log(sumvalue + click);
+                      totalClicks.innerText = sumvalue;
+                      productPrice.innerText = newPrice;
+                      if (
+                        click < 0 &&
+                        document.getElementById("cartTotal").innerText == 0
+                      ) {
+                        document.getElementById("cartTotal").innerText = 0;
+                      } else if (click > 0) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) + 25;
+                      } else if (
+                        click < 0 &&
+                        parseInt(
+                          document.getElementById("totalClicks").innerText
+                        ) >= 0
+                      ) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) - 25;
+                      } else if (
+                        document.getElementById("cartTotal").innerText == 0
+                      ) {
+                        document.getElementById("cartTotal").innerText = 0;
+                      }
+                      if (sumvalue < 0) {
+                        totalClicks.innerText = 0;
+                      }
+                      if (newPrice < 0) {
+                        productPrice.innerText = 25;
+                      }
+                    }
+                  }
+                </script>
+              </p>
+            </div>
+          </div>
+          <div class="product">
+            <img
+              src="https://robots.ieee.org/robots/legoev3/legoev3-thumb@2x.jpg"
+            />
+            <div class="product-info">
+              <h3 class="product-name">Lego Mindstorms EV3</h3>
+              <div class="product-description">
+                Lego Mindstorms EV3 is a set with 5 starter robot models to
+                build/program.
+                <!----------------These include a programmable power brick, servo motors, 
+                and sensors(color, touch, infrared).-->
+              </div>
+              &nbsp;
+              <h4 class="product-price">
+                $<span id="productPrice2">350</span>
+              </h4>
+              <p class="product-quantity">
+                Add to Cart:
+                <button onclick="totalClick2(1)">+</button>
+                <span id="totalClicks2">0</span>
+                <button onclick="totalClick2(-1)">-</button>
+                <button onclick="totalClick2(0)">Reset</button>
+                <script>
+                  function totalClick2(click) {
+                    const totalClicks = document.getElementById("totalClicks2");
+                    const productPrice =
+                      document.getElementById("productPrice2");
+                    if (click == 0) {
+                      totalClicks.innerText = 0;
+                      productPrice.innerText = 350;
+                    } else {
+                      const sumvalue = parseInt(totalClicks.innerText) + click;
+                      const newPrice = 350 * sumvalue;
+                      console.log(sumvalue + click);
+                      totalClicks.innerText = sumvalue;
+                      productPrice.innerText = newPrice;
+                      if (
+                        click < 0 &&
+                        document.getElementById("cartTotal").innerText == 0
+                      ) {
+                        document.getElementById("cartTotal").innerText = 0;
+                      } else if (click > 0) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) + 350;
+                      } else if (
+                        click < 0 &&
+                        parseInt(
+                          document.getElementById("totalClicks2").innerText
+                        ) >= 0
+                      ) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) - 350;
+                      } else if (
+                        document.getElementById("cartTotal").innerText == 0
+                      ) {
+                        document.getElementById("cartTotal").innerText = 0;
+                      }
+                      if (sumvalue < 0) {
+                        totalClicks.innerText = 0;
+                      }
+                      if (newPrice < 0) {
+                        productPrice.innerText = 350;
+                      }
+                    }
+                  }
+                </script>
+              </p>
+            </div>
+          </div>
+          <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81ATM7COXUS.jpg" />
+            <div class="product-info">
+              <h3 class="product-name">Remote Controller Car</h3>
+              <div class="product-description">
+                This is a car with a remote for children to play around with.
+              </div>
+              &nbsp;
+              <h4 class="product-price">$<span id="productPrice3">20</span></h4>
+              <p class="product-quantity">
+                Add to Cart:
+                <button onclick="totalClick3(1)">+</button>
+                <span id="totalClicks3">0</span>
+                <button onclick="totalClick3(-1)">-</button>
+                <button onclick="totalClick3(0)">Reset</button>
+                <script>
+                  function totalClick3(click) {
+                    const totalClicks = document.getElementById("totalClicks3");
+                    const productPrice =
+                      document.getElementById("productPrice3");
+                    if (click == 0) {
+                      totalClicks.innerText = 0;
+                      productPrice.innerText = 20;
+                    } else {
+                      const sumvalue = parseInt(totalClicks.innerText) + click;
+                      const newPrice = 20 * sumvalue;
+                      console.log(sumvalue + click);
+                      totalClicks.innerText = sumvalue;
+                      productPrice.innerText = newPrice;
+
+                      if (
+                        click < 0 &&
+                        document.getElementById("cartTotal").innerText == 0
+                      ) {
+                        document.getElementById("cartTotal").innerText = 0;
+                      } else if (click > 0) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) + 20;
+                      } else if (
+                        click < 0 &&
+                        parseInt(
+                          document.getElementById("totalClicks3").innerText
+                        ) >= 0
+                      ) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) - 20;
+                      }
+                      if (sumvalue < 0) {
+                        totalClicks.innerText = 0;
+                      }
+                      if (newPrice < 0) {
+                        productPrice.innerText = 20;
+                      }
+                    }
+                  }
+                </script>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="cart-total">
+          <p>
+            <span>Total Price</span>
+            <text>$<span id="cartTotal">0</span></text>
+          </p>
+          <a href="#">Proceed to Checkout</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

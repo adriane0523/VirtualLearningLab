@@ -33,6 +33,7 @@ urlpatterns = [
     path("student/discussion_board/", include('Components.discussion_board.urls')),
     path('tinymce/', include('tinymce.urls')),
     path('quiz/', include("Components.quiz.urls")),
+    path('shoppifyPage/', include("Components.shoppifyPage.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
