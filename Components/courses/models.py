@@ -3,7 +3,7 @@ import uuid
 
 class Courses(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    description = models.TextField()
+    description = models.TextField(max_length=255)
     id = models.UUIDField( 
         primary_key = True, 
         default = uuid.uuid4, 
@@ -22,3 +22,6 @@ class Courses(models.Model):
     # returns the url to the particual discussions 'discussion_detail.html' 
     def get_absolute_url(self):
         return reverse("class_detail", kwargs={'id_field': self.courses.id}) #
+
+    def courseNum(self):
+        return len(self.users.count())
