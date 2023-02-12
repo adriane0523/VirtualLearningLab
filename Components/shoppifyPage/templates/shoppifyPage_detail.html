@@ -27,7 +27,7 @@
   .product {
     display: flex;
     width: 100%;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
     border: 1px solid silver;
     margin-bottom: 20px;
@@ -39,7 +39,7 @@
   }
   .product > img {
     width: 300px;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
   }
   .product > img:hover {
@@ -153,20 +153,28 @@
   <body>
     <div class="container">
       <h1><font size="6">Shopping Cart</font></h1>
+      <h2 <font size="4">Metal Education Products</font></h2>
       <div class="cart">
         <div class="products">
           <div class="product">
             <img
-              src="https://media.istockphoto.com/photos/robotic-arm-isolated-picture-id1045170110?k=20&m=1045170110&s=612x612&w=0&h=tPR3pCxOJ6CT5TWCRphmwJrKYHVd8e0QQK50IGXfNz4="
+              src="https://static2.robobloq.com/images/product/all/1.f6ddfeb97937b3a.png"
             />
             <div class="product-info">
-              <h3 class="product-name">Robotic Arm</h3>
+              <h3 class="product-name">Q-Dino</h3>
               <div class="product-description">
-                This is a robotic play-arm geared for children to tinker around
-                with.
+                Q-Dino is a STEAM educational robot that combines with the
+                integrated knowledge in mechanics, electronics, engineering and
+                programming fields. Children could simply get access to the
+                actual capability in the coming AI and robotics era just by
+                playing with robots at home! If you are interested in this
+                product, more information about Q-Dino can be found here.
+                <a href="https://www.robobloq.com/product/Q-dino"
+                  >View Q-Dino Information.</a
+                >
               </div>
               &nbsp;
-              <h4 class="product-price">$<span id="productPrice1">25</span></h4>
+              <h4 class="product-price">Original Price: $<span id="productPrice1">25</span></h4>
               <p class="product-quantity">
                 Add to Cart:
                 <button onclick="totalClick(1)">+</button>
@@ -178,9 +186,6 @@
                     const totalClicks = document.getElementById("totalClicks");
                     const productPrice =
                       document.getElementById("productPrice1");
-                    if (click == 0) {
-                      totalClicks.innerText = 0;
-                    } else {
                       const sumvalue = parseInt(totalClicks.innerText) + click;
                       const newPrice = 25 * sumvalue;
                       console.log(sumvalue + click);
@@ -217,27 +222,34 @@
                       if (newPrice < 0) {
                         productPrice.innerText = 25;
                       }
+                      if(click == 0)
+                      {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice1").innerText)
+                        document.getElementById("productPrice1").innerText = 25; 
+                      }
                     }
-                  }
                 </script>
               </p>
             </div>
           </div>
           <div class="product">
             <img
-              src="https://robots.ieee.org/robots/legoev3/legoev3-thumb@2x.jpg"
+              src="https://static2.robobloq.com/images/product/all/46.95626eead5533f6.png"
             />
             <div class="product-info">
-              <h3 class="product-name">Lego Mindstorms EV3</h3>
+              <h3 class="product-name">Q-Elephant</h3>
               <div class="product-description">
-                Lego Mindstorms EV3 is a set with 5 starter robot models to
-                build/program.
-                <!----------------These include a programmable power brick, servo motors, 
-                and sensors(color, touch, infrared).-->
+                This is an 8-legged structure built from over 260+ pieces of
+                metal parts and electronic modules. More information about
+                Q-Elephant can be found here.
+                <a href="https://www.robobloq.com/product/Q-elephant"
+                  >View Q-Elephant information.</a
+                >
               </div>
               &nbsp;
               <h4 class="product-price">
-                $<span id="productPrice2">350</span>
+                Original Price: $<span id="productPrice2">350</span>
               </h4>
               <p class="product-quantity">
                 Add to Cart:
@@ -250,10 +262,6 @@
                     const totalClicks = document.getElementById("totalClicks2");
                     const productPrice =
                       document.getElementById("productPrice2");
-                    if (click == 0) {
-                      totalClicks.innerText = 0;
-                      productPrice.innerText = 350;
-                    } else {
                       const sumvalue = parseInt(totalClicks.innerText) + click;
                       const newPrice = 350 * sumvalue;
                       console.log(sumvalue + click);
@@ -290,21 +298,35 @@
                       if (newPrice < 0) {
                         productPrice.innerText = 350;
                       }
+                      if(click == 0)
+                      {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice2").innerText)
+                        document.getElementById("productPrice2").innerText = 350; 
+                      }
                     }
-                  }
                 </script>
               </p>
             </div>
           </div>
           <div class="product">
-            <img src="https://m.media-amazon.com/images/I/81ATM7COXUS.jpg" />
+            <img
+              src="https://static2.robobloq.com/images/product/all/9.b20b7da91cbff89.png"
+            />
             <div class="product-info">
-              <h3 class="product-name">Remote Controller Car</h3>
+              <h3 class="product-name">Q-Scout</h3>
               <div class="product-description">
-                This is a car with a remote for children to play around with.
+                Q-Scout has the following capabilities: 1. Outdoor Control 2.
+                Line Tracking 3. Light Show 4. Music Mode 5. Obstacle Avoidance
+                6. Awesome DIY Kit 7. Strong Compatability 8. Expansion Package
+                More in-depth about this remote-controlled STEM Robot Kit can be
+                referred on this website.
+                <a href="https://www.robobloq.com/product/Q-scout"
+                  >View Q-Scot information.</a
+                >
               </div>
               &nbsp;
-              <h4 class="product-price">$<span id="productPrice3">20</span></h4>
+              <h4 class="product-price">Original Price: $<span id="productPrice3">20</span></h4>
               <p class="product-quantity">
                 Add to Cart:
                 <button onclick="totalClick3(1)">+</button>
@@ -316,16 +338,11 @@
                     const totalClicks = document.getElementById("totalClicks3");
                     const productPrice =
                       document.getElementById("productPrice3");
-                    if (click == 0) {
-                      totalClicks.innerText = 0;
-                      productPrice.innerText = 20;
-                    } else {
                       const sumvalue = parseInt(totalClicks.innerText) + click;
                       const newPrice = 20 * sumvalue;
                       console.log(sumvalue + click);
                       totalClicks.innerText = sumvalue;
                       productPrice.innerText = newPrice;
-
                       if (
                         click < 0 &&
                         document.getElementById("cartTotal").innerText == 0
@@ -353,20 +370,309 @@
                       if (newPrice < 0) {
                         productPrice.innerText = 20;
                       }
+                      if(click == 0)
+                      {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice3").innerText)
+                        document.getElementById("productPrice3").innerText = 20; 
+                      }
                     }
-                  }
                 </script>
               </p>
             </div>
           </div>
+          <div class="product">
+            <img
+              src="https://static2.robobloq.com/images/product/all/22.27a5d41963cb039.png"
+            />
+            <div class="product-info">
+              <h3 class="product-name">Qoopers</h3>
+              <div class="product-description">
+                Qoopers is a programmable building robot kit with the following
+                features: 1. Remote Control By App 2. Obstacle Avoidance 3.
+                Music Mode
+                <a href="https://www.robobloq.com/product/Qoopers"
+                  >View Qoopers information.</a
+                >
+              </div>
+              &nbsp;
+              <h4 class="product-price">Original Price: $<span id="productPrice4">20</span></h4>
+              <p class="product-quantity">
+                Add to Cart:
+                <button onclick="totalClick4(1)">+</button>
+                <span id="totalClicks4">0</span>
+                <button onclick="totalClick4(-1)">-</button>
+                <button onclick="totalClick4(0)">Reset</button>
+                <script>
+                  function totalClick4(click) {
+                    const totalClicks = document.getElementById("totalClicks4");
+                    const productPrice =
+                      document.getElementById("productPrice4");
+                      const sumvalue = parseInt(totalClicks.innerText) + click;
+                      const newPrice = 20 * sumvalue;
+                      console.log(sumvalue + click);
+                      totalClicks.innerText = sumvalue;
+                      productPrice.innerText = newPrice;
+
+                      if (
+                        click < 0 &&
+                        document.getElementById("cartTotal").innerText == 0
+                      ) {
+                        document.getElementById("cartTotal").innerText = 0;
+                      } else if (click > 0) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) + 20;
+                      } else if (
+                        click < 0 &&
+                        parseInt(
+                          document.getElementById("totalClicks4").innerText
+                        ) >= 0
+                      ) {
+                        document.getElementById("cartTotal").innerText =
+                          parseInt(
+                            document.getElementById("cartTotal").innerText
+                          ) - 20;
+                      }
+                      if (sumvalue < 0) {
+                        totalClicks.innerText = 0;
+                      }
+                      if (newPrice < 0) {
+                        productPrice.innerText = 20;
+                      }
+                      if(click == 0)
+                      {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice4").innerText)
+                        document.getElementById("productPrice4").innerText = 20; 
+                      }
+                    }
+                </script>
+              </p>
+            </div>
         </div>
-        <div class="cart-total">
-          <p>
-            <span>Total Price</span>
-            <text>$<span id="cartTotal">0</span></text>
-          </p>
-          <a href="#">Proceed to Checkout</a>
+        <h3 <font size="4">Innovative Educational Products</font></h3>
+        <div class="product">
+          <img
+            src="https://static2.robobloq.com/images/product/all/49.34848e4867fc1e5.png"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Qobo</h3>
+            <div class="product-description">
+              Qobo is an interactive talented robot. 
+              It can sing, dance, read, move, glow with different lights
+              and execute various coding instructions. 
+              All the children will love this adorable robotic snail!
+              Additional information about Qobo can be found here.
+              <a href="https://www.robobloq.com/product/Qobo"
+                >View Qobo information.</a
+              >
+            </div>
+            &nbsp;
+            <h4 class="product-price">Original Price: $<span id="productPrice5">20</span></h4>
+            <p class="product-quantity">
+              Add to Cart:
+              <button onclick="totalClick5(1)">+</button>
+              <span id="totalClicks5">0</span>
+              <button onclick="totalClick5(-1)">-</button>
+              <button onclick="totalClick5(0)">Reset</button>
+              <script>
+                function totalClick5(click) {
+                  const totalClicks = document.getElementById("totalClicks5");
+                  const productPrice =
+                    document.getElementById("productPrice5");
+                    const sumvalue = parseInt(totalClicks.innerText) + click;
+                    const newPrice = 20 * sumvalue;
+                    console.log(sumvalue + click);
+                    totalClicks.innerText = sumvalue;
+                    productPrice.innerText = newPrice;
+                    if (
+                      click < 0 &&
+                      document.getElementById("cartTotal").innerText == 0
+                    ) {
+                      document.getElementById("cartTotal").innerText = 0;
+                    } else if (click > 0) {
+                      document.getElementById("cartTotal").innerText =
+                        parseInt(
+                          document.getElementById("cartTotal").innerText
+                        ) + 20;
+                    } else if (
+                      click < 0 &&
+                      parseInt(
+                        document.getElementById("totalClicks5").innerText
+                      ) >= 0
+                    ) {
+                      document.getElementById("cartTotal").innerText =
+                        parseInt(
+                          document.getElementById("cartTotal").innerText
+                        ) - 20;
+                    }
+                    if (sumvalue < 0) {
+                      totalClicks.innerText = 0;
+                    }
+                    if (newPrice < 0) {
+                      productPrice.innerText = 20;
+                    }
+                    if(click == 0)
+                      {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice5").innerText)
+                        document.getElementById("productPrice5").innerText = 20; 
+                      }
+                  }
+              </script>
+            </p>
+          </div>
         </div>
+        <div class="product">
+          <img
+            src="https://static2.robobloq.com/images/product/all/63.f009889e893f26d.png"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Coding Express</h3>
+            <div class="product-description">
+              A colorful smart engine capable of performing 19 different actions. 
+              This product is tailored towards children to build foundational knowledge
+              in areas of robotics and coding. 
+              <a href="https://www.robobloq.com/product/Qobo"
+                >View Coding Express information.</a
+              >
+            </div>
+            &nbsp;
+            <h4 class="product-price">Original Price: $<span id="productPrice6">20</span></h4>
+            <p class="product-quantity">
+              Add to Cart:
+              <button onclick="totalClick6(1)">+</button>
+              <span id="totalClicks6">0</span>
+              <button onclick="totalClick6(-1)">-</button>
+              <button onclick="totalClick6(0)">Reset</button>
+              <script>
+                function totalClick6(click) {
+                  const totalClicks = document.getElementById("totalClicks6");
+                  const productPrice =
+                    document.getElementById("productPrice6");
+                    const sumvalue = parseInt(totalClicks.innerText) + click;
+                    const newPrice = 20 * sumvalue;
+                    console.log(sumvalue + click);
+                    totalClicks.innerText = sumvalue;
+                    productPrice.innerText = newPrice;
+
+                    if (
+                      click < 0 &&
+                      document.getElementById("cartTotal").innerText == 0
+                    ) {
+                      document.getElementById("cartTotal").innerText = 0;
+                    } else if (click > 0) {
+                      document.getElementById("cartTotal").innerText =
+                        parseInt(
+                          document.getElementById("cartTotal").innerText
+                        ) + 20;
+                    } else if (
+                      click < 0 &&
+                      parseInt(
+                        document.getElementById("totalClicks6").innerText
+                      ) >= 0
+                    ) {
+                      document.getElementById("cartTotal").innerText =
+                        parseInt(
+                          document.getElementById("cartTotal").innerText
+                        ) - 20;
+                    }
+                    if (sumvalue < 0) {
+                      totalClicks.innerText = 0;
+                    }
+                    if (newPrice < 0) {
+                      productPrice.innerText = 20;
+                      
+                    }
+                    if(click == 0)
+                    {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice6").innerText)
+                        document.getElementById("productPrice6").innerText = 20; 
+                    }
+                  }
+              </script>
+            </p>
+          </div>
+        </div>
+        <div class="product">
+          <img
+            src="https://static2.robobloq.com/images/product/feelin-code/pic2.4a8f83b9c9b0e74.jpg"
+          />
+          <div class="product-info">
+            <h3 class="product-name">Feelin Code</h3>
+            <div class="product-description">
+              Transform any conductive object into joysticks and keyboards. 
+              <a href="https://www.robobloq.com/product/Qobo"
+                >View Feelin Code Information.</a
+              >
+            </div>
+            &nbsp;
+            <h4 class="product-price">Original Price: $<span id="productPrice7">20</span></h4>
+            <p class="product-quantity">
+              Add to Cart:
+              <button onclick="totalClick7(1)">+</button>
+              <span id="totalClicks7">0</span>
+              <button onclick="totalClick7(-1)">-</button>
+              <button onclick="totalClick7(0)">Reset</button>
+              <script>
+                function totalClick7(click) {
+                  const totalClicks = document.getElementById("totalClicks7");
+                  const productPrice =
+                    document.getElementById("productPrice7");
+                    const sumvalue = parseInt(totalClicks.innerText) + click;
+                    const newPrice = 20 * sumvalue;
+                    console.log(sumvalue + click);
+                    totalClicks.innerText = sumvalue;
+                    productPrice.innerText = newPrice;
+
+                    if (
+                      click < 0 &&
+                      document.getElementById("cartTotal").innerText == 0
+                    ) {
+                      document.getElementById("cartTotal").innerText = 0;
+                    } else if (click > 0) {
+                      document.getElementById("cartTotal").innerText =
+                        parseInt(
+                          document.getElementById("cartTotal").innerText
+                        ) + 20;
+                    } else if (
+                      click < 0 &&
+                      parseInt(
+                        document.getElementById("totalClicks7").innerText
+                      ) >= 0
+                    ) {
+                      document.getElementById("cartTotal").innerText =
+                        parseInt(
+                          document.getElementById("cartTotal").innerText
+                        ) - 20;
+                    }
+                    if (sumvalue < 0) {
+                      totalClicks.innerText = 0;
+                    }
+                    if (newPrice < 0) {
+                      productPrice.innerText = 20;
+                    }
+                    if(click == 0)
+                    {
+                        totalClicks.innerText = 0; 
+                        document.getElementById("cartTotal").innerText = parseInt(document.getElementById("cartTotal").innerText) - parseInt(document.getElementById("productPrice7").innerText)
+                        document.getElementById("productPrice7").innerText = 20; 
+                    }
+                  }
+              </script>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="cart-total">
+        <p>
+          <span>Total Price</span>
+          <text>$<span id="cartTotal">0</span></text>
+        </p>
+        <a href="/#">Proceed to Checkout</a>
       </div>
     </div>
   </body>
