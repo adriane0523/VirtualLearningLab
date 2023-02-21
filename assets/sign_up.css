@@ -9,8 +9,8 @@
 .container2{
     width: 100%;
     height:100%;
-    background-image: linear-gradient(to bottom right, rgba(144,69,243,255), rgba(96,197,244,255))*/
-    background-color: red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, rgba(144,69,243,255), rgba(96,197,244,255))
+    background-color =  red; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, rgba(146,68,244,255), rgba(96,197,244,255));
 
     background-position: relative;
