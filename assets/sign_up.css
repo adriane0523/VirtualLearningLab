@@ -1,85 +1,36 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-
-}
-
 .container2{
     width: 100%;
     height:100%;
     background-image: linear-gradient(to bottom right, rgba(144,69,243,255), rgba(96,197,244,255))
     background-color =  red; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, rgba(146,68,244,255), rgba(96,197,244,255));
-
     background-position: relative;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.wrapper {
-    position: relative;
-    height: 75%;
-    width: 35%;
+.form-box-inner{    
+    position: absolute;
     background: rgba(235,235,235,255);
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left:32.5%;
-    top: 10%;
-    margin-bottom: 10%;
+    width: 30%;
+    margin-left: 10%;
+    margin-top: 10%;
 }
 
-.wrapper .form-box {
-    width: 100%;
-    padding: 30px;
-}
-
-.form-box h2 {
-    color: rgba(27,27,27,255);
-    text-align: center;
-    top: 0%;
-}
-
-.input-box {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    border-bottom: 2px solid rgba(162,162,162,255);
-    margin: 40px 0;
-}
-
-.input-box.email{
-    margin: 0;
-}
-
-/*.input-box.name{
-    position: relative;
-    width: 45%;
-}*/
-
-/*.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: rgba(162,162,162,255);
-    font-weight: 500;
-    pointer-events: none;
-}*/
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
+.input-box{
     border: none;
-    outline: none;
+    border-bottom: 2px solid black;
+    background-color: #ebebeb;
+}
+
+.input-box.lname{
+    position: absolute;
+    right: 10%;
+    top: 28%;
 }
 
 .flexboxrow{
@@ -91,8 +42,6 @@
 .btn1 {
     margin-left: 25%;
     margin-right: 25%;
-    width: 50%;
-    height: 45px;
     background: linear-gradient(to bottom right, rgba(146,68,244,255), rgba(96,197,244,255));
     border: none;
     outline: none;
@@ -106,24 +55,12 @@
     
 }
 
-/*
-
-/////
-    
-
-    border-radius: 20px;
-    border: none 
-    backgroun-color: linear-gradient(to bottom right, rgba(146,68,244,255), rgba(96,197,244,255));
-    color: #fff;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 12px 45px;
-    Letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform;
+.create{
     text-align: center;
-*/
-
-input::placeholder-shown{
-    color: black;
+    font-family: 'Poppins', sans-serif;
 }
+
+/*input::placeholder {
+    background-color: rgb(128, 128, 50);
+    content: 'hello';
+}*/
