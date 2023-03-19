@@ -1,8 +1,8 @@
 .container2{
     width: 100%;
     height:100%;
-    background-image: linear-gradient(to bottom right, rgba(144,69,243,255), rgba(96,197,244,255))
-    background-color =  red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, rgba(144,69,243,255), rgba(96,197,244,255));
+    background-color:red; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, rgba(146,68,244,255), rgba(96,197,244,255));
     background-position: relative;
     background-repeat: no-repeat;
@@ -32,12 +32,6 @@
     color: gray;
 }
 
-/* .input-box.lname{
-    position: absolute;
-    right: 10%;
-    top: 28%;
-} */
-
 .flexboxrow{
     /* display: grid;
     grid-template-columns: 1fr 1fr;
@@ -58,7 +52,7 @@
     border: none;
     outline: none;
     border-radius: 30px;
-    cursor: poiner;
+    cursor: pointer;
     font-size: 1.5em;
     color: #fff;
     font-weight: 500;
@@ -80,3 +74,15 @@
     background-color: rgb(128, 128, 50);
     content: 'hello';
 }*/
+
+.input-box.fname {
+    float: left;
+    width: 87%;
+}
+
+.input-box.lname {
+    position: fixed;
+    right: 6%;
+    top: 22%;
+    width: 45%;
+}
