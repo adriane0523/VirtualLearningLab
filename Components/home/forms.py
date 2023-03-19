@@ -5,13 +5,13 @@ from django.core.exceptions import ValidationError
  
  
 class CustomUserCreationForm(forms.Form):
-    firstname = forms.CharField(label='', min_length=4, max_length=20, widget=forms.TextInput(attrs={'class': "input-box fname" , 'placeholder': 'Email'}))
-    lastname = forms.CharField(label='', min_length=4, max_length=20, widget=forms.TextInput(attrs={'class': "input-box lname"}))
-    gradelevel = forms.IntegerField(label="", widget=forms.TextInput(attrs={'class': "input-box grade"}))
-    username = forms.CharField(label='', min_length=4, max_length=150, widget=forms.TextInput(attrs={'class': "input-box uname"}))
-    email = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': "input-box email"}))
-    password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': "input-box p1"}))
-    password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': "input-box p2"}))
+    firstname = forms.CharField(label='', min_length=4, max_length=20, widget=forms.TextInput(attrs={'class': "input-box fname" , 'value': 'Firstname'}))
+    lastname = forms.CharField(label='', min_length=4, max_length=20, widget=forms.TextInput(attrs={'class': "input-box lname" , 'value': 'Lastname'}))
+   # gradelevel = forms.IntegerField(label="", widget=forms.TextInput(attrs={'class': "input-box grade"}))
+    username = forms.CharField(label='', min_length=4, max_length=150, widget=forms.TextInput(attrs={'class': "input-box uname", 'value': 'Username'}))
+    email = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': "input-box email", 'value': 'Email'}))
+    password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': "input-box p1", 'value': 'Password1'}))
+    password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': "input-box p2", 'value': 'Password2'}))
  
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
