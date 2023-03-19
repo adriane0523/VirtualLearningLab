@@ -19,29 +19,40 @@
     width: 30%;
     margin-left: 35%;
     margin-top: 10%;
+    padding: 20px;
 }
 
 .input-box{
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid gray;
     background-color: #ebebeb;
     padding: 10px;
+    width: 200%;
+    outline: 0;
+    color: gray;
 }
 
-.input-box.lname{
+/* .input-box.lname{
     position: absolute;
     right: 10%;
     top: 28%;
-}
+} */
 
 .flexboxrow{
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 7%;
+    gap: 7%; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flexboxrow .input-box {
+    flex-basis: 48%;
 }
 
 .btn1 {
-    margin-left: 60%;
+    margin-left: 50%;
     margin-right: 50%;
     background: linear-gradient(to bottom right, rgba(146,68,244,255), rgba(96,197,244,255));
     border: none;
@@ -59,6 +70,10 @@
 .create{
     text-align: center;
     font-family: 'Poppins', sans-serif;
+}
+
+.h1 ,h1{
+    font-size: 1.5rem;
 }
 
 /*input::placeholder {
