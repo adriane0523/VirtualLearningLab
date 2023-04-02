@@ -181,7 +181,7 @@
                 <div class="drp-content">
                     <li></li>
                     <label for="toggle">
-                    <span>User Info </span><span class="arrow">&#9660;</span></label>
+                    <span>User Info </span><span class="arrow">&#9660;</span></label><a class="btn btn-sm btn-darks" href="{% url 'update_profile' %}"><span>&#9998;</span></a>
                     <input type="checkbox" id="toggle">
                     <div class="content">First Name: {{ user.profile.first_name }}<br>
                                          Last Name: {{ user.profile.last_name }}<br> 
