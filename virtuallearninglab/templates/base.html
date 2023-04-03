@@ -138,8 +138,8 @@
     <div class="top-row-dashboard" style="display: grid; margin-bottom: 7%;margin-top: 2%; padding-right: 4%;padding-left: 4%;">
       <div class="welcome-row" style="margin-left: 2%; margin-top: 3%;  grid-row: 1;grid-column: 1;"><h1 style="font-size:250%;">Welcome back! , <br> {{ user.username }}</h1></div>
       <div class="time-box" style="border: 1px solid black; float: right; grid-row: 1;grid-column: 3;">
-        <p>Learning Time: 20 min<br> This Week: 0 min</p>
-        <p>Longest Streak: 1 day</p>
+        <div><p>Learning Time: 20 min<br> This Week: 0 min</p></div>
+        <div><p>Longest Streak: 1 day</p></div>
       </div>
     </div>
     {% for course, progress in course_progress %} 
