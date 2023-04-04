@@ -103,7 +103,7 @@ input[type=checkbox] {
     border-radius: 10px;
 }
 
-.btn.btn-sm.btn-darks{
+.edit-btn{
     position:absolute;
     margin-top: 0.4%;
     border-radius: 10px;
