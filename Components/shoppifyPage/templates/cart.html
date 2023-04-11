@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+  *{
+    font-family: 'Comfortaa', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+  }
+  .container > h1 {
+    padding: 20px 0;
+  }
+
+  .cart {
+    display: flex;
+  }
+  .products{
+    flex: 0.75;
+  }
+  .product {
+    display: flex;
+    width: 1005;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid silver; 
+    margin-bottom: 20px;
+  }
+  .product:hover {
+    border: none;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0,2);
+    transform: scale(1.0%);
+  }
+  .product > img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .product > img:hover{
+    transform: scale(1.04);
+  }
+  .product-info{
+    padding: 20px;
+    width: 100%;
+    position: relative;
+  }
+  .product-name, .product-price, .product-offer{
+    margin-bottom: 20px;
+  }
+  .product-remove{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 25px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .product-remove::hover{
+    background-color: white;
+    color: green;
+    font-weight: 600;
+    border: 1px solid green;
+  }
+  .product-quantity > input {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+  }
+
+</style>
+<html>
+  <head>
+    <title>E-Learning Lab Shopping Cart</title>
+    <link rel="stylesheet" type="text/css" href="cart.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Shopping Cart</h1>
+      <div class="cart">
+        <div class="products">
+          <div class="product">
+            <img
+              src="https://media.istockphoto.com/photos/robotic-arm-isolated-picture-id1045170110?k=20&m=1045170110&s=612x612&w=0&h=tPR3pCxOJ6CT5TWCRphmwJrKYHVd8e0QQK50IGXfNz4="
+            />
+            <div class="product-info">
+              <h3 class="product-name">Lego Mindstorms EV3</h3>
+              <h2 class="product-price">$ 25.98</h2>
+              <h2 class="product-offer">50%</h2>
+              <p class="product-quantity">Qnt: <input value="1"
+                name="">
+                <p class="product-remove">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                  <span class="remove">Remove</span>
+                </p>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="cart-total">
+          <p>
+            <span>Total Price</span>
+            <span>$ 3,000</span>
+          </p>
+          <p>
+            <span>Number of Items</span>
+            <span>2</span>
+          </p>
+          <p>
+            <span>You Save</span>
+            <span>$ 1,000</span>
+          </p>
+          <a href="#">Proceed to Checkout</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'Components.multichoice',
     'Components.true_false',
     'Components.essay',
+
+    'Components.shoppifyPage',
 ]
 
 MIDDLEWARE = [

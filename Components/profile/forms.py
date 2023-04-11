@@ -6,7 +6,7 @@ from datetime import datetime
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('location', 'birthdate',)
+        fields = ('first_name', 'last_name', 'bio', 'grade_level', 'profile_image', 'location', 'birthdate')
 
     birthdate = forms.DateField(
         label='Birthdate',

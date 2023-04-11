@@ -4,6 +4,7 @@
 {% block page_content %}
 
 <!--- Start LANDING PAGE Section -->
+
 <div>
 	{% if notifications %}
 	{% for notification in notifications %}
@@ -18,100 +19,217 @@
 	<div class="row">
 		<div class="landing">
 			<div class="col-lg-12 col-md-12 col-sm-12 home-wrap">
-				<div class="home-inner">>
-					<!-- Note . currently needed to display Image -->
-					.
-				</div>
+				<!-- <div class="home-inner">
+					<div class="overlay"></div> -->
+					<!-- Note . currently needed to display Image. -->
+					<!-- .
+				</div> -->
+				<!-- <img class="home-inner" src="/static/wallpaper.jpeg"> -->
+				<img class="home-inner" src="/static/techBackGif.gif" alt="Cover animated gif"/>
+				<div class="overlay"></div>
 			</div>
 		</div>
-
-		<div class="caption " style="padding-left: 10rem;">
-			<h1 class="">Welcome to <br> E-LEARNING LAB</h1>
-			<h5>Empowering online communities with STEM education</h5>
-			<a type="button" href="#about_us" class="btn btn-outline-light">Learn about the program</a>
+		
+		<div class="caption " style="padding-left: 10%;">
+			<h1 class="">Welcome to <br> <span style="color: yellow;">E</span><span style="color: rgb(255, 94, 0);" >-</span><span style="color: rgb(0, 200, 255);" >LEARNING</span> <span style="color: rgb(0, 204, 255);" >LAB</span></h1>
+			<h5>Empowering online communities with <span style="color: aqua;">STEM</span> education</h5>
+			<a type="button" href="{% url 'about' %}" class="btn btn-outline-light">Learn about the program</a>
 		</div>
+	</div>
+	
+	<div class="container-flow text-center quote">
+		<h2>STEM education is the leveler for all to be successful<br> in the future needs of humanity.</h2>
+		<br>
+		<p>-Ian R. McAndrew, Ph.D</p>
+	</div>
+
+	<div class="title-head">
+		<h1>Courses</h1>
+		<br>
+		<section class="card-deck">
+			<article class="card card--1">
+				<div class="card__img"></div>
+				<a href="{% url 'course' %}" class="card_link">
+					<div class="card__img--hover"></div>
+				</a>
+				<div class="card__info">
+					<span class="card__category"> PROGRAMMING</span>
+					<h3 class="card__title">Python</h3>
+				</div>
+			</article>
+			
+			
+			<article class="card card--2">
+				<div class="card__img"></div>
+				<a href="{% url 'course' %}" class="card_link">
+					<div class="card__img--hover"></div>
+				</a>
+				<div class="card__info">
+					<span class="card__category"> GAME DEVELOPMENT / HUMAN COMPUTER INTERFACE</span>
+					<h3 class="card__title">VR / AR Reality</h3>
+				</div>
+			</article>  
+
+			<article class="card card--3">
+				<div class="card__img"></div>
+				<a href="{% url 'course' %}" class="card_link">
+					<div class="card__img--hover"></div>
+				</a>
+				<div class="card__info">
+					<span class="card__category"> ENGINEERING</span>
+					<h3 class="card__title">Robotics</h3>
+				</div>
+			</article>  
+			
+			<article class="card card--4">
+				<div class="card__img"></div>
+				<a href="{% url 'course' %}" class="card_link">
+					<div class="card__img--hover"></div>
+				</a>
+				<div class="card__info">
+					<span class="card__category"> PROGRAMMING</span>
+					<h3 class="card__title">Java</h3>
+				</div>
+			</article>  
+		</section>
+	</div>
+	<div class="info-slides">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+				<img class="d-block w-100" src="/static/Python_image.jpg" alt="First slide">
+					<div class="carousel-caption">
+						<h5>Building Games Using Python</h5>
+						<p>Python supports developing games. Its Pygame library is highly useful. It supports art, music, sound, video, and multimedia projects to be built with it.</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+				<img class="d-block w-100" src="/static/robot_face.jpg" alt="Third slide">
+				<div class="carousel-caption">
+						<h5>Smart Robot For Face Recognition</h5>
+						<p>Design a smart robot that can recognise your face and of other regular visitors. If the robot recognises correctly, it will greet and call out the name.</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+				<img class="d-block w-100" src="/static/cyber_scams.jpg" alt="Third slide">
+				<div class="carousel-caption">
+						<h5>Learn about Phishing Scams</h5>
+						<p>In a phishing scheme, attacker act as someone sender is not to trick the recipient into divulging credentials, clicking a malicious link, or opening an attachment that infects the user's system</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+				<img class="d-block w-100" src="/static/algeb.jpg" alt="Third slide">
+				<div class="carousel-caption">
+						<h5>Solving Two Equations With Two Variables</h5>
+						<p>If you're given a system (or group) of two equations that have the same two variables in them - and you can use a technique called substitution to find values for both variables.</p>
+					</div>
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+	<h1 class="title-head">Virtual Learning Lab offers topics in:</h1>
+	<div class="row text-center">
+		<div class="col-md-3">
+			<img src="{% static 'security.svg' %}" style="height: auto; width:5rem">
+			<h3>Cybersecurity</h3>
+		</div>
+
+		<div class="col-md-3">
+			<img src="{% static 'big-data.svg' %}" style="height: auto; width:5rem">
+
+			<h3>AI/Big Data</h3>
+		</div>
+
+		<div class="col-md-3"><img src="{% static 'code.svg' %}" style="height: auto; width:5rem">
+			<h3>Programming</h3>
+		</div>
+
+		<div class="col-md-3"><img src="{% static 'iot.svg' %}" style="height: auto; width:5rem">
+			<h3> Iot Technology </h3>
+		</div>
+
+		<div class="col-md-4"><img src="{% static 'robot.svg' %}" style="height: auto; width:5rem">
+			<h3>Robotics </h3>
+		</div>
+
+		<div class="col-md-4"><img src="{% static 'virtual-reality.svg' %}" style="height: auto; width:5rem">
+			<h3>Virtual Reality </h3>
+		</div>
+
+		<div class="col-md-4"><img src="{% static 'engineering.svg' %}" style="height: auto; width:5rem">
+			<h3> STEM related subjects </h3>
+		</div>
+	</div>
+	<div class="text-center" style="padding-bottom:2rem; padding-top: 4rem;">
+		<h3> Sign Up and Start Learning</h3>
+		<a style="margin: 1rem;" type="button" class="btn btn-outline-dark" href="{% url 'login' %}">Sign Up</a>
+	</div>
+		
+		
+		<div class="row" style="background-color: rgb(32, 32, 32); color: aqua; padding: 1.5rem;">
+			<form action="https://formspree.io/f/xlezpeal" method="POST" enctype="multipart/form-data">      
+				<h1>Need help enrolling <span id="Q" style="font-size: 100;">?</span></h1>
+				<p>Send us your details and our consultant will reach back to you.</p>
+			<h7>Name*</h7>
+			<input name="name" type="text" class="feedback-input" />
+			<h7>Email Address*</h7>   
+			<input name="email" type="text" class="feedback-input" />
+			<h7>Mobile* (Add country code)</h7>   
+			<input name="mobile" type="number" class="feedback-input" />
+			<h7>Age*</h7>   
+			<input name="age" type="number" class="feedback-input" />
+			<h7>Grade*</h7>   
+			<input name="grade" type="number" class="feedback-input" />
+			<input type="submit" value="SUBMIT"/>
+		</form>
+		<div id="status"></div>
+		<script>
+		var form = document.getElementById("my-form");
+		
+		async function handleSubmit(event) {
+			event.preventDefault();
+			var status = document.getElementById("status");
+			var data = new FormData(event.target);
+			fetch(event.target.action, {
+				method: form.method,
+				body: data,
+				headers: {
+					'Accept': 'application/json'
+				}
+			}).then(response => {
+				if (response.ok) {
+				status.innerHTML = "Thanks for your submission!";
+				form.reset()
+				} else {
+				response.json().then(data => {
+					if (Object.hasOwn(data, 'errors')) {
+					status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+					} else {
+					status.innerHTML = "Oops! There was a problem submitting your form"
+					}
+				})
+				}
+			}).catch(error => {
+				status.innerHTML = "Oops! There was a problem submitting your form"
+			});
+			}
+			form.addEventListener("submit", handleSubmit)
+	</script>
 	</div>
 	<!--- End LANDING PAGE Section -->
-
-	<!--- Start ABOUT Section -->
-	<div class="about" id="about_us">
-		<div class="col-lg-12 narrow ">
-
-			<div class="text-center title">
-				<h1>About Us</h1>
-
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sHvliCvdn0w"
-						allowfullscreen></iframe>
-				</div>
-			</div>
-
-			<p class="lead">The Cyber E-learning Hub is a brain child of Bridge2Africa Organization that leverages the
-				power
-				of
-				4.0 technologies to empower learning communities. We have seen our platform evolve from the
-				Cyber Project to a STEM platform and subsequently becoming a one stop E-Learning Hub which has
-				grown to serve a global audience. <br><br>
-
-				<b>Our centre specialise in creating the next breakthroughs in the
-					field of AI, IoT, Robotics , Big Data, Virtual Reality, Cyber Security, Computer Science, Coding and
-					STEM Education to learners of all ages.
-					The Cyber learning Lab is a trusted compliment to the
-					conventional education since we profile emerging smart technologies and instructors from elite
-					universities. The thrust of our learning Lab is to consider the engagement factor, collaborative
-					learning or peer to peer learning, use of critical thinking skills and innovation through project
-					based
-					learning. </b><br></br>
-
-				This solution based platform facilitates both formative and summative assessments.
-				Students develop both cognitively and socially through integration as they meet other learners from
-				other parts of the world preparing them for the cultural dynamics of the 21st century. Bridge2Africa
-				is proud to present this Solution Based E- Learning Lab equipped with an E-Library integrated with
-				simulations, gamification for immersive learning experience. Indeed we empower learning online
-				communities through innovation
-				<br>
-				<br>
-			<h3 class="text-center">Virtual Learning Lab offers topics in:</h3>
-			</p>
-
-			<div class="row text-center">
-				<div class="col-md-3">
-					<img src="{% static 'security.svg' %}" style="height: auto; width:5rem">
-					<h3>Cybersecurity</h3>
-				</div>
-
-				<div class="col-md-3">
-					<img src="{% static 'big-data.svg' %}" style="height: auto; width:5rem">
-
-					<h3>AI/Big Data</h3>
-				</div>
-
-				<div class="col-md-3"><img src="{% static 'code.svg' %}" style="height: auto; width:5rem">
-					<h3>Programming</h3>
-				</div>
-
-				<div class="col-md-3"><img src="{% static 'iot.svg' %}" style="height: auto; width:5rem">
-					<h3> Iot Technology </h3>
-				</div>
-
-				<div class="col-md-4"><img src="{% static 'robot.svg' %}" style="height: auto; width:5rem">
-					<h3>Robotics </h3>
-				</div>
-
-				<div class="col-md-4"><img src="{% static 'virtual-reality.svg' %}" style="height: auto; width:5rem">
-					<h3>Virtual Reality </h3>
-				</div>
-
-				<div class="col-md-4"><img src="{% static 'engineering.svg' %}" style="height: auto; width:5rem">
-					<h3> STEM related subjects </h3>
-				</div>
-			</div>
-			<div class="text-center" style="padding-bottom:2rem; padding-top: 4rem;">
-				<h3> Sign Up and Start Learning</h3>
-				<a style="margin: 1rem;" type="button" class="btn btn-outline-dark" href="{% url 'login' %}">Sign Up</a>
-			</div>
-		</div>
-	</div>
 </div>
 
 {% endblock %}

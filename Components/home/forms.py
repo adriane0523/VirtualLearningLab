@@ -5,10 +5,13 @@ from django.core.exceptions import ValidationError
  
  
 class CustomUserCreationForm(forms.Form):
-    username = forms.CharField(label='Enter Username', min_length=4, max_length=150)
-    email = forms.EmailField(label='Enter email')
-    password1 = forms.CharField(label='Enter password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
+    firstname = forms.CharField(label='', min_length=4, max_length=20, widget=forms.TextInput(attrs={'class': "input-box fname" , 'value': 'Firstname'}))
+    lastname = forms.CharField(label='', min_length=4, max_length=20, widget=forms.TextInput(attrs={'class': "input-box lname" , 'value': 'Lastname'}))
+   # gradelevel = forms.IntegerField(label="", widget=forms.TextInput(attrs={'class': "input-box grade"}))
+    username = forms.CharField(label='', min_length=4, max_length=150, widget=forms.TextInput(attrs={'class': "input-box uname", 'value': 'Username'}))
+    email = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': "input-box email", 'value': 'Email'}))
+    password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': "input-box p1", 'value': 'Password1'}))
+    password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': "input-box p2", 'value': 'Password2'}))
  
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
@@ -17,6 +20,16 @@ class CustomUserCreationForm(forms.Form):
             raise  ValidationError("Username already exists")
         return username
  
+    def clean_firstname(self):
+        firstname = self.cleaned_data['firstname']
+
+        return firstname
+
+    def clean_lastname(self):
+        lastname = self.cleaned_data['lastname']
+
+        return lastname
+
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
         r = User.objects.filter(email=email)
@@ -37,6 +50,9 @@ class CustomUserCreationForm(forms.Form):
         user = User.objects.create_user(
             self.cleaned_data['username'],
             self.cleaned_data['email'],
-            self.cleaned_data['password1']
+            self.cleaned_data['password1'],
+            #firstname = self.cleaned_data['firstname'],
+            #lastname = self.cleaned_data['lastname'],
+            #gradelevel = self.cleaned_data['gradelevel'],
         )
         return user

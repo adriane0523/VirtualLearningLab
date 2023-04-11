@@ -1,11 +1,42 @@
 {% extends "base.html" %}
 {% block page_content %}
-<div class="col-md-8 offset-md-2" style="padding: 3rem 0rem;">
-    <h1>Courses</h1>
-    <hr>
+<style>
+    #course-link
+    {
+        color: white !important;
+        fill: white !important;
+    }
+    #info-link
+    {
+        color: #969696 !important;
+        fill: #969696 !important;
+    }
+    #course-des
+    {
+        text-overflow: ellipsis !important;
+    }
+    
+</style>    
+<div class="col-md-8 offset-md-2" style="padding-bottom: 5rem; margin-left: 5.5%; margin-right: 3.5%;">
     {% for courses in courses %}
-    <h3><a href= "{% url 'welcome_page' courses.id %}"> {{ courses.name }}</a></h3>
-    <p style="padding-bottom: 2rem;">{{ courses.description }}</p>
+    <svg x="0%" style="width:135%; height:80%; padding-top: 50px">
+        <g>
+            <rect x="0" y="0" rx="5%" ry="0%" style="height: 100%; width: 100% ; fill:#151515; background-size: 50% 100%; border-collapse: separate;"></rect>
+            <text x="7%" y="20%" font-size="40px" fill = "white" font-weight="bold">{{ courses.name }}</text>
+            <rect x="7%" y="25%" rx=".5%" ry="0%" style="height: 9px; width: 35%; fill:#83D1D6 ; border-radius: 5%; border-collapse:separate;"></rect>
+            <text id="info-link" x ="7%" y = "40%" font-size="28px" fill="#969696" style="font-style: normal; font-weight: 500;  line-height: 34px;"><a id = "info-link" href= "{% url 'class_index' courses.id %}" style="color:#969696;">• course modules</a></text>
+            <text x ="7%" y = "50%" font-size="28px" fill="#969696" style="font-style: normal; font-weight: 500;  line-height: 34px;"><a id = "info-link" href= "{% url 'quiz_index' courses.id %}" style="color:#969696;">• assessments</a></text>
+            <text x ="7%" y = "60%" font-size="28px" fill="#969696" style="font-style: normal; font-weight: 500;  line-height: 34px;"><a id = "info-link" href= "{% url 'discussions' courses.id %}" style="color:#969696;">• discussion posts</a></text>
+            <foreignObject id = "course-des" x="50%" y="25%" width="45%" font-size="28px" height="40%" style="font-style: normal; font-weight: 500;  line-height: 34px;">
+                <body id = "course-des" style="color:#969696; font-style: normal; font-weight: 500;  line-height: 34px;">{{ courses.description }}</body>
+            </foreignObject>
+            <rect x="66.25%" y="77.5%" rx="2.5%" ry="0%" style="height: 12%; width: 16% ;fill:rgb(131,209,214); border-collapse: separate;"></rect>
+            <text id = "course-link" x="69%" y="85.25%" font-size="24px"\ fill="#FFF" style="color:white"><a id = "course-link" href= "{% url 'welcome_page' courses.id %}" style="color:white;">View Course</a></text>
+        </g>
+        <g x="50%" style="width:50%">
+            
+        </g>
+    </svg>
     {% endfor %}
 </div>
 {% endblock %}

@@ -1,4 +1,6 @@
+from email.policy import default
 from django.db import models
+from django.forms import BooleanField
 from embed_video.fields import EmbedVideoField
 from Components.courses.models import Courses
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -13,6 +15,8 @@ class Post(models.Model):
     content = RichTextUploadingField(blank=True)
     courses = models.ForeignKey('courses.Courses', related_name="posts",  on_delete=models.CASCADE, to_field= 'id', default="dd390af4-07f1-4597-b48a-f585fd79289d" )
     description = models.TextField( default= "", blank=True)
+
+    completed = models.BooleanField(default=False)
 
     class Meta:
         # Add verbose name 

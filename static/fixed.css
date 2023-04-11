@@ -4,10 +4,12 @@
 }
 
 /*--- Bootstrap Mobile Gutter Fix --*/
-.row, .container-fluid {
+/* .row, .container-fluid {
 margin-left: 0px!important;
 margin-right: 0px!important;
-}
+} */
+
+/* 
 
 /*--- Fix for Fixed Navbar jumping on scroll --*/
 .fixed-top  {

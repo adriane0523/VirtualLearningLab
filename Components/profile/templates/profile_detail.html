@@ -3,26 +3,30 @@
 {% load crispy_forms_tags %}
 
 {% block page_content %}
-
+<!--
 <div class="container">
     <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card shadow">
-
+                    {% if user.profile.profile_image %}
+                    <img class="card-img-top" src="{{ user.profile.profile_image.url }}" alt="Card image cap">
+                    {% else %}
+                    <img class="card-img-top" src="/static/default_image.jpg" alt="Card image cap">
+                    {% endif %}
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <div class="mt-3">
                                 <h4>{{ user.username }}</h4>
                                 <p class="text-secondary mb-1">{{ user.profile.get_role_display }}</p>
-                                <p class="text-muted font-size-sm">{{ user.profile.location }}</p>
-
+                                <p class="text-muted font-size-sm">{{ user.profile.bio }}</p>
+                                <!--Make a bio section for profile
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card shadow mt-3">
+                <!-- <div class="card shadow mt-3">
                     <ul class="list-group list-group-flush">
                         <li
                             class="bg-light list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -69,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
 
 
             </div>
@@ -84,10 +88,28 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Username</h6>
+                                <h6 class="mb-0">First Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ user.username }}
+                                {{ user.profile.first_name }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.profile.last_name }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Grade</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.profile.grade_level }}
                             </div>
                         </div>
                         <hr>
@@ -96,7 +118,7 @@
                                 <h6 class="mb-0">Password</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                *************************
+                                ******************
                             </div>
                         </div>
                         <hr>
@@ -129,31 +151,73 @@
                     </div>
                 </div>
 
+                <!--Update Profile
+                <a class="btn btn-sm btn-dark float-right" href="{% url 'update_profile' %}">Update Profile</a>
 
-                <div id="update-profile">
-                    <div class="card shadow mb-3">
-                        <div class="d-flex flex-column align-items-center text-center">
-                            <div class="card-title mt-4 mb-0">
-                                <h4>Update Profile</h4>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="card-body">
-
-                            <div class="col-sm-12">
-                                <form method="post">
-                                    {% csrf_token %}
-                                    {{ profile_form|crispy }}
-                                    <button class="btn btn-sm btn-light">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+
         </div>
     </div>
 </div>
-
+-->
+<div class="parent">
+    <div class="box-element1">
+    <div class="img-container">
+        <div class="image-cont">
+            <img class="image-content" src="{{ user.profile.profile_image.url }}" alt="Card image cap">
+            <!--Update Profile-->
+            <a class="btn btn-sm btn-dark float-right" href="{% url 'update_profile' %}"><span>&#9998;</span></a>
+        </div>
+        <div class="text-container">
+            <p><b><p style="font-size:3ch;">{{user.username}}</p></b> 
+            Student Since <br>
+            {{ user.profile.created_at }}</p>
+        </div>
+    </div>
+</div>
+    <div class="box-element2">
+    <div class = "container1">
+        <div class="drp-container">
+            <ul>
+                <div class="drp-content">
+                    <li></li>
+                    <label for="toggle">
+                    <span>User Info </span><span class="arrow">&#9660;</span></label><a class="btn btn-sm btn-darks"   href="{% url 'update_profile' %}" style="border-radius: 10px;background-color: #343a40; color: white; float: right; margin-right: 2%; margin-top: 1%;"><span>&#9998;</span></a>
+                    <input type="checkbox" id="toggle">
+                    <div class="content">First Name: {{ user.profile.first_name }}<br>
+                                         Last Name: {{ user.profile.last_name }}<br> 
+                                         Grade: {{ user.profile.grade_level }}<br>
+                                         Email: {{ user.email }}<br>
+                                         Birthday: {{ user.profile.birthdate }}<br>
+                                         Location: {{ user.profile.location }}<br>
+                    </div>
+                    </div>
+                <div class="drp-content1">
+                    <li></li>
+                    <label for="toggle1">
+                    <span>My Courses</span><span class="arrow">&#9660;</span></label>
+                    <input type="checkbox" id="toggle1">
+                    <div class="content">Course:</div>
+                </div>
+                <div class="drp-content1">
+                    <li></li>
+                    <label for="toggle2">
+                    <span>My Projects</span><span class="arrow">&#9660;</span></label>
+                    <input type="checkbox" id="toggle2">
+                    <div class="content">Projects : </div>
+                </div>
+                <div class="drp-content1">
+                    <li></li>
+                    <label for="toggle3">
+                    <span>My Games</span><span class="arrow">&#9660;</span></label>
+                    <input type="checkbox" id="toggle3">
+                    <div class="content">Games: </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+                
+</div>
 
 {% endblock %}

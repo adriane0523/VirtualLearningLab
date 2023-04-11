@@ -10,6 +10,14 @@ def class_index(request, id_field):
     if (not posts.exists()):
         return render(request, "not_exists.html", {})
 
+    num = 0
+    for post in posts:
+        if post.completed == True:
+            num += 1
+    
+
+    request.session['percent'] = int((num/len(posts)) * 100)
+
     context = {
         "posts": posts,
     }
@@ -25,7 +33,10 @@ def class_detail(request, id_field, pk):
         return render(request, "not_exists.html", {})
 
     detail = posts.get( pk=pk)
-  
+    
+    setattr(detail, 'completed', True)
+    detail.save()
+    
     context = {
         "post": detail,
      

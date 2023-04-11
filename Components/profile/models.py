@@ -1,3 +1,4 @@
+from email.policy import default
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -17,6 +18,11 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True, null=True)
     birthdate = models.DateField(null=True, blank=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
+    bio = models.TextField(max_length=250, blank=True, default="Hey, this is my bio...")
+    first_name = models.CharField(max_length=30, blank=False,default="")
+    last_name = models.CharField(max_length=30, blank=False, default="")
+    grade_level = models.IntegerField(default=0)
+    profile_image = models.ImageField(upload_to='profiles/', default='profiles/default_pfp.jpg')#, default='default_pfp.jpg'
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
