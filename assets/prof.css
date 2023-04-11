@@ -102,3 +102,12 @@ input[type=checkbox] {
     margin-top: 0.4%;
     border-radius: 10px;
 }
+
+.edit-btn{
+    position:absolute;
+    margin-top: 0.4%;
+    border-radius: 10px;
+    margin-left: 75%;
+    background-color: black;
+    color: white;
+}
